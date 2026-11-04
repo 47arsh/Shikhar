@@ -35,7 +35,7 @@ export interface PipelineResult {
   attemptsLeft?: number;
 }
 
-interface AnswerPipelineDB {
+export interface AnswerPipelineDB {
   getSeededAnswers(promptId: string): Promise<SeededAnswer[]>;
   getJudgedAnswer(promptId: string, normalizedInput: string): Promise<{
     valid: boolean;
