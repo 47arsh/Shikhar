@@ -6,7 +6,7 @@ export type SanitizeResult =
 
 const URL_PATTERN = /https?:\/\//i;
 const WWW_PATTERN = /www\./i;
-const CONTROL_CHAR_PATTERN = /[\u0000-\u001f\u007f-\u009f]/;
+const CONTROL_CHAR_PATTERN = /[\u0000-\u001f\u007f-\u009f]/; // eslint-disable-line no-control-regex
 
 export function sanitizeInput(input: string): SanitizeResult {
   if (input.length > GAME.maxInputLength) {
