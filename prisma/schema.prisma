@@ -16,6 +16,7 @@ model Prompt {
   dateKey   String?  // for daily climbs: IST date
   answers   Answer[]
   climbs    ClimbRound[]
+  unmatchedSubmissions UnmatchedSubmission[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -88,7 +89,7 @@ model UnmatchedSubmission {
   @@index([promptId])
   @@index([promptId, normalizedInput])
   @@index([reviewed])
-  @@unique([promptId, normalizedInput], { name: "UnmatchedSubmission_promptId_normalizedInput_key" })
+  @@unique([promptId, normalizedInput])
 }
 
 model PlayCount {
