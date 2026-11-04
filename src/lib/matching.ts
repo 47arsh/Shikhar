@@ -1,3 +1,5 @@
+import { hasDigits } from "./normalize";
+
 function levenshtein(a: string, b: string): number {
   const m = a.length;
   const n = b.length;
