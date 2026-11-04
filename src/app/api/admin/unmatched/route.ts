@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { validateAdminSecret } from "./schema";
+import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { env } from "@/lib/env";
 
 export async function GET(req: NextRequest): Promise<NextResponse> {
-  env;
+  void env;
   const secret = req.headers.get("x-admin-secret");
   if (secret !== env.ADMIN_SECRET) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -21,7 +21,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
 }
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  env;
+  void env;
   const secret = req.headers.get("x-admin-secret");
   if (secret !== env.ADMIN_SECRET) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

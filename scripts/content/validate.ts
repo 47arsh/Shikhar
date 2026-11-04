@@ -67,7 +67,7 @@ function checkCategoryCounts(prompts: PromptContent[]): void {
     counts.set(p.category, (counts.get(p.category) || 0) + 1);
   }
   console.log("Prompt counts by category:");
-  for (const [cat, count] of [...counts.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+  for (const [cat, count] of Array.from(counts.entries()).sort((a, b) => a[0].localeCompare(b[0]))) {
     console.log(`  ${cat}: ${count}`);
   }
   const total = prompts.length;

@@ -50,7 +50,7 @@ async function main(): Promise<void> {
     );
 
     for (const ans of content.answers) {
-      const key = ans.canonicalName?.toLowerCase() ?? ans.name.toLowerCase();
+      const key = ans.name.toLowerCase();
       const existing = existingByName.get(key);
       if (existing) {
         await prisma.answer.update({
