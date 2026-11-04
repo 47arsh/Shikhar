@@ -17,7 +17,8 @@
     "content:validate": "tsx scripts/content/validate.ts",
     "content:seed": "tsx scripts/content/seed.ts",
     "check:env": "tsx scripts/check-env.ts",
-    "simulate": "tsx scripts/simulate.ts"
+    "simulate": "tsx scripts/simulate.ts",
+    "seed:wikidata": "tsx scripts/seed-wikidata.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.0.0",
