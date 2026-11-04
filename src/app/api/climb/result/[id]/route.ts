@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { GAME } from "@/config/game";
 
 export async function GET(
   req: NextRequest,
@@ -23,8 +24,10 @@ export async function GET(
 
   const altitude = Math.round(
     Math.min(
-      GAME_BASE + (climb.totalPoints * (SUMMIT - GAME_BASE)) / POINTS_TO_SUMMIT,
-      SUMMIT
+      GAME.baseAltitudeM +
+        (climb.totalPoints * (GAME.summitAltitudeM - GAME.baseAltitudeM)) /
+          GAME.pointsToSummit,
+      GAME.summitAltitudeM
     )
   );
 
@@ -45,7 +48,3 @@ export async function GET(
     })),
   });
 }
-
-const GAME_BASE = 1780;
-const SUMMIT = 8586;
-const POINTS_TO_SUMMIT = 600;
