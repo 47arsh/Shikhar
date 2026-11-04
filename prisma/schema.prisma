@@ -17,6 +17,7 @@ model Prompt {
   answers   Answer[]
   climbs    ClimbRound[]
   unmatchedSubmissions UnmatchedSubmission[]
+  judgedAnswers JudgedAnswer[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -31,6 +32,9 @@ model Answer {
   prompt        Prompt     @relation(fields: [promptId], references: [id], onDelete: Cascade)
   canonicalName String
   seededRarity  Int?       // 1 to 100, nullable
+  source        String     @default("seeded") // "seeded" | "judged" | "approved"
+  entityId      String?    // external id, e.g. Wikidata
+  popularitySignal Float?   // sitelink count or similar popularity measure
   aliases       Json       // string[]
   plays         Int        @default(0)
   createdAt     DateTime   @default(now())
@@ -90,6 +94,24 @@ model UnmatchedSubmission {
   @@index([promptId, normalizedInput])
   @@index([reviewed])
   @@unique([promptId, normalizedInput])
+}
+
+model JudgedAnswer {
+  id              String   @id @default(cuid())
+  promptId        String
+  prompt          Prompt   @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  normalizedInput String
+  valid           Boolean
+  canonicalName   String
+  entityId        String?
+  confidence      Float
+  reason          String   // max 140 chars
+  answerId        String?  // promoted Answer when valid
+  createdAt       DateTime @default(now())
+
+  @@index([promptId])
+  @@index([promptId, normalizedInput])
+  @@unique([promptId, normalizedInput], map: "JudgedAnswer_promptId_normalizedInput_key")
 }
 
 model PlayCount {

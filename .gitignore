@@ -29,13 +29,14 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# build prompt (kept in codebase, never committed)
-prompt.md
+# build prompt (committed as single source of truth)
+# prompt.md
 
-# prisma
-prisma/migrations
+# prisma - migrations are committed for review
+# prisma/migrations
 
 # vercel
 .vercel
 
-# typescript build info\n*.tsbuildinfo
+# typescript build info
+*.tsbuildinfo
