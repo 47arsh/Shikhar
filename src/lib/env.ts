@@ -14,27 +14,44 @@ const envSchema = z.object({
 
 type Env = z.infer<typeof envSchema>;
 
-let env: Env;
+const envDefaults = {
+  DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/shikhar?schema=public",
+  KV_ADAPTER: "memory",
+  ADMIN_SECRET: "dev-secret",
+  NEXT_PUBLIC_SITE_URL: "http://localhost:3000",
+  NODE_ENV: "development",
+} as const;
 
 export function loadEnv(): Env {
-  if (env) return env;
-  const parsed = envSchema.safeParse(process.env);
+  if (process.env.NODE_ENV === "production") {
+    const missing = ["DATABASE_URL"].filter((k) => !process.env[k]);
+    if (missing.length > 0) {
+      console.error("[Shikhar] Missing required production env vars:");
+      for (const k of missing) {
+        console.error(`- ${k}`);
+      }
+      process.exit(1);
+    }
+  }
 
-  if (!parsed.success) {
+  const env = envSchema.safeParse({
+    ...envDefaults,
+    ...process.env,
+  });
+
+  if (!env.success) {
     if (process.env.NODE_ENV === "production") {
       console.error("[Shikhar] Missing or invalid production env vars:");
-      for (const [path] of Object.entries(parsed.error.flatten().fieldErrors)) {
+      for (const [path] of Object.entries(env.error.flatten().fieldErrors)) {
         console.error(`- ${path}`);
       }
       process.exit(1);
     }
     console.warn("[Shikhar] Running with mock/dev env fallbacks. Set real values for production.");
-    env = envSchema.parse({});
-    return env;
+    return envSchema.parse(envDefaults);
   }
 
-  env = parsed.data;
-  return env;
+  return env.data;
 }
 
 export const env = loadEnv();
