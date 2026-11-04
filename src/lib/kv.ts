@@ -48,10 +48,10 @@ class MemoryAdapter implements KeyValueStore {
 
 let upstashAdapter: KeyValueStore | null = null;
 
-function getUpstashAdapter(): KeyValueStore {
+async function getUpstashAdapter(): Promise<KeyValueStore> {
   if (upstashAdapter) return upstashAdapter;
-  // Lazy import so the Upstash SDK is optional when using the memory adapter.
-  const { Redis } = require("@upstash/redis");
+  // @upstash/redis is optional: only load it when the upstash adapter is selected
+  const { Redis } = await import("@upstash/redis");
   const url = process.env.UPSTASH_REDIS_REST_URL;
   const token = process.env.UPSTASH_REDIS_REST_TOKEN;
   if (!url || !token) {
@@ -81,7 +81,7 @@ function getUpstashAdapter(): KeyValueStore {
   return upstashAdapter;
 }
 
-export function createKVStore(): KeyValueStore {
+export async function createKVStore(): Promise<KeyValueStore> {
   const adapter = process.env.KV_ADAPTER || "memory";
   if (adapter === "upstash") {
     return getUpstashAdapter();

@@ -17,7 +17,7 @@ function getIp(req: NextRequest): string {
 }
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  env;
+  void env;
 
   const body = await req.json().catch(() => null);
   let input: { climbId: string; round: number; input: string };
@@ -29,9 +29,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   const anonId = getAnonId(req);
   const ip = getIp(req);
+  const store = await kv;
 
   for (const key of [`rl:ip:${ip}`, `rl:anon:${anonId}`]) {
-    const count = await kv.incr(key, 60);
+    const count = await store.incr(key, 60);
     if (count > 30) {
       return NextResponse.json({ error: "Rate limited" }, { status: 429 });
     }
@@ -93,13 +94,13 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   if (matchedAnswer) {
     // Anti-poisoning: increment plays only first time anonId answers this prompt
     const playKey = `play:${anonId}:${round.promptId}`;
-    const alreadyPlayed = await kv.get(playKey);
+    const alreadyPlayed = await store.get(playKey);
     if (!alreadyPlayed) {
       await prisma.answer.update({
         where: { id: matchedAnswer.id },
         data: { plays: { increment: 1 } },
       });
-      await kv.set(playKey, "1", 86400 * 30);
+      await store.set(playKey, "1", 86400 * 30);
     }
 
     const score = computePoints(
@@ -108,7 +109,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       matchedAnswer.plays + 1
     );
 
-    const updatedRound = await prisma.climbRound.update({
+    await prisma.climbRound.update({
       where: { id: round.id },
       data: {
         input: input.input,

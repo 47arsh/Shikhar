@@ -17,7 +17,7 @@ function getIp(req: NextRequest): string {
 }
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  env;
+  void env;
 
   const body = await req.json().catch(() => null);
   let input: { mode: string };
@@ -29,9 +29,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
   const anonId = getAnonId(req);
   const ip = getIp(req);
+  const store = await kv;
 
   for (const key of [`rl:ip:${ip}`, `rl:anon:${anonId}`]) {
-    const count = await kv.incr(key, RATE_LIMIT_WINDOW);
+    const count = await store.incr(key, RATE_LIMIT_WINDOW);
     if (count > MAX_RATE) {
       return NextResponse.json({ error: "Rate limited" }, { status: 429 });
     }
