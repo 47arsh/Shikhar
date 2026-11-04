@@ -29,6 +29,9 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# build prompt (kept in codebase, never committed)
+prompt.md
+
 # prisma
 prisma/migrations
 
