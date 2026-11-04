@@ -4,9 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { kv } from "@/lib/kv";
 import { env } from "@/lib/env";
 import { GAME } from "@/config/game";
-import { normalizeInput } from "@/lib/normalize";
-import { fuzzyMatch } from "@/lib/matching";
-import { computePoints } from "@/lib/scoring";
+import { AnswerPipeline, createPipeline, type PipelineInput } from "@/lib/answer-pipeline";
 
 function getAnonId(req: NextRequest): string {
   return req.headers.get("x-anon-id") || req.cookies.get("anon_id")?.value || "anonymous";
@@ -14,6 +12,65 @@ function getAnonId(req: NextRequest): string {
 
 function getIp(req: NextRequest): string {
   return req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "unknown";
+}
+
+async function finalizeRoundAndClimb(
+  climbId: string,
+  roundId: string,
+  attempts: number,
+  points: number,
+  tier: string,
+  canonicalId: string | null,
+  input: string,
+  totalPointsBefore: number,
+  roundsCount: number,
+  roundsPerClimb: number,
+  pointsToSummit: number,
+  baseAltitudeM: number,
+  summitAltitudeM: number,
+) {
+  const newTotal = totalPointsBefore + points;
+
+  await prisma.climbRound.update({
+    where: { id: roundId },
+    data: {
+      input,
+      canonicalId,
+      points,
+      tier,
+      attempts,
+    },
+  });
+
+  const updatedClimb = await prisma.climb.update({
+    where: { id: climbId },
+    data: { totalPoints: newTotal },
+  });
+
+  let outcome = updatedClimb.outcome;
+  if (newTotal >= pointsToSummit) {
+    outcome = "summited";
+    await prisma.climb.update({
+      where: { id: climbId },
+      data: { outcome: "summited", completedAt: new Date() },
+    });
+  } else if (roundsCount >= roundsPerClimb) {
+    outcome = "turned_back";
+    await prisma.climb.update({
+      where: { id: climbId },
+      data: { outcome: "turned_back", completedAt: new Date() },
+    });
+  }
+
+  const altitude = Math.round(
+    baseAltitudeM + (newTotal * (summitAltitudeM - baseAltitudeM)) / pointsToSummit
+  );
+
+  return {
+    newTotal,
+    outcome,
+    altitude: Math.min(altitude, summitAltitudeM),
+  };
 }
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
@@ -41,7 +98,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const climb = await prisma.climb.findUnique({
     where: { id: input.climbId },
     include: {
-      rounds: { where: { round: input.round }, include: { prompt: { include: { answers: true } } } },
+      rounds: { where: { round: input.round }, include: { prompt: true } },
     },
   });
 
@@ -56,139 +113,94 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ error: "Round not found" }, { status: 404 });
   }
 
-  const normalized = normalizeInput(input.input);
-  const answers = round.prompt.answers;
-
-  // Exact match against canonical names and aliases
-  let matchedAnswer: (typeof answers)[number] | null = null;
-  for (const ans of answers) {
-    if (normalizeInput(ans.canonicalName) === normalized) {
-      matchedAnswer = ans;
-      break;
-    }
-    for (const alias of (ans.aliases as string[])) {
-      if (normalizeInput(alias) === normalized) {
-        matchedAnswer = ans;
-        break;
-      }
-    }
-    if (matchedAnswer) break;
+  // Anti-poisoning: a round can only be answered once
+  if (round.input != null || round.skipped) {
+    return NextResponse.json({ error: "Round already answered or skipped" }, { status: 400 });
   }
 
-  if (!matchedAnswer) {
-    // Fuzzy match (skip if input/key contains digits)
-    if (!/\d/.test(normalized)) {
-      let best: { ans: (typeof answers)[number]; dist: number } | null = null;
-      for (const ans of answers) {
-        const d = fuzzyMatch(normalized, normalizeInput(ans.canonicalName));
-        if (d != null && (best === null || d < best.dist)) best = { ans, dist: d };
-        for (const alias of (ans.aliases as string[])) {
-          const d2 = fuzzyMatch(normalized, normalizeInput(alias));
-          if (d2 != null && (best === null || d2 < best.dist)) best = { ans: ans, dist: d2 };
-        }
-      }
-      if (best) matchedAnswer = best.ans;
-    }
-  }
+  const pipeline: AnswerPipeline = await createPipeline();
+  const pipelineInput: PipelineInput = {
+    promptId: round.promptId,
+    promptText: round.prompt.text,
+    hint: round.prompt.hint,
+    userInput: input.input,
+    anonId,
+  };
 
-  if (matchedAnswer) {
-    // Anti-poisoning: increment plays only first time anonId answers this prompt
-    const playKey = `play:${anonId}:${round.promptId}`;
-    const alreadyPlayed = await store.get(playKey);
-    if (!alreadyPlayed) {
-      await prisma.answer.update({
-        where: { id: matchedAnswer.id },
-        data: { plays: { increment: 1 } },
-      });
-      await store.set(playKey, "1", 86400 * 30);
-    }
+  const result = await pipeline.run(pipelineInput);
 
-    const score = computePoints(
-      matchedAnswer.seededRarity ?? null,
-      matchedAnswer.plays,
-      matchedAnswer.plays + 1
-    );
+  // Scoring outcomes: matched or valid → award points
+  if (result.outcome === "matched" || result.outcome === "valid") {
+    const newAttempts = round.attempts + 1;
+    const points = result.points ?? 0;
+    const tier = result.tier ?? "Everyone's answer";
 
-    await prisma.climbRound.update({
-      where: { id: round.id },
-      data: {
-        input: input.input,
-        canonicalId: matchedAnswer.id,
-        points: score.points,
-        tier: score.tier,
-        attempts: round.attempts + 1,
-      },
-    });
-
-    const newTotal = climb.totalPoints + score.points;
-    const updatedClimb = await prisma.climb.update({
-      where: { id: climb.id },
-      data: { totalPoints: newTotal },
-    });
-
-    let outcome = updatedClimb.outcome;
-    if (newTotal >= GAME.pointsToSummit) {
-      outcome = "summited";
-      await prisma.climb.update({
-        where: { id: climb.id },
-        data: { outcome: "summited", completedAt: new Date() },
-      });
-    } else if (climb.rounds.length >= GAME.roundsPerClimb) {
-      outcome = "turned_back";
-      await prisma.climb.update({
-        where: { id: climb.id },
-        data: { outcome: "turned_back", completedAt: new Date() },
-      });
-    }
-
-    const altitude = Math.round(
-      GAME.baseAltitudeM + (newTotal * (GAME.summitAltitudeM - GAME.baseAltitudeM)) / GAME.pointsToSummit
+    const finish = await finalizeRoundAndClimb(
+      climb.id,
+      round.id,
+      newAttempts,
+      points,
+      tier,
+      result.answerId ?? null,
+      input.input,
+      climb.totalPoints,
+      climb.rounds.length,
+      GAME.roundsPerClimb,
+      GAME.pointsToSummit,
+      GAME.baseAltitudeM,
+      GAME.summitAltitudeM,
     );
 
     return NextResponse.json({
-      result: "matched",
-      canonicalName: matchedAnswer.canonicalName,
-      points: score.points,
-      tier: score.tier,
-      altitude: Math.min(altitude, GAME.summitAltitudeM),
-      totalPoints: newTotal,
-      outcome,
+      result: result.outcome,
+      canonicalName: result.canonicalName,
+      points,
+      tier,
+      firstAscent: result.firstAscent,
+      altitude: finish.altitude,
+      totalPoints: finish.newTotal,
+      outcome: finish.outcome,
       roundsCompleted: climb.rounds.length,
     });
   }
 
-  // Unmatched
+  // Non-scoring outcomes: uncertain, invalid, unverified → count as attempt
   const newAttempts = round.attempts + 1;
+
   await prisma.climbRound.update({
     where: { id: round.id },
     data: { input: input.input, attempts: newAttempts },
   });
 
-  await prisma.unmatchedSubmission.upsert({
-    where: { promptId_normalizedInput: { promptId: round.promptId, normalizedInput: normalized } },
-    update: { count: { increment: 1 }, lastSeen: new Date() },
-    create: { promptId: round.promptId, normalizedInput: normalized },
-  });
-
   if (newAttempts >= GAME.maxAttemptsPerRound) {
-    // Auto-score 0, move to next round or end
     await prisma.climbRound.update({
       where: { id: round.id },
       data: { points: 0, tier: "Everyone's answer" },
     });
     const allRounds = await prisma.climbRound.findMany({ where: { climbId: climb.id } });
-    if (allRounds.filter((r) => r.input != null).length >= GAME.roundsPerClimb) {
+    const answeredRounds = allRounds.filter((r) => r.input != null || r.skipped).length;
+    if (answeredRounds >= GAME.roundsPerClimb) {
       await prisma.climb.update({
         where: { id: climb.id },
         data: { outcome: "turned_back", completedAt: new Date() },
       });
-      return NextResponse.json({ result: "out_of_attempts", attemptsLeft: 0, outcome: "turned_back" });
+      return NextResponse.json({
+        result: result.outcome,
+        message: "We couldn't verify that one. Try another answer or skip.",
+        attemptsLeft: 0,
+        outcome: "turned_back",
+      });
     }
-    return NextResponse.json({ result: "out_of_attempts", attemptsLeft: 0 });
+    return NextResponse.json({
+      result: result.outcome,
+      message: "We couldn't verify that one. Try another answer or skip.",
+      attemptsLeft: 0,
+    });
   }
 
   return NextResponse.json({
-    result: "unmatched",
+    result: result.outcome,
+    message: "We couldn't verify that one. Try another answer or skip.",
     attemptsLeft: GAME.maxAttemptsPerRound - newAttempts,
   });
 }
