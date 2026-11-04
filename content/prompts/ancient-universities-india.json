@@ -1,0 +1,214 @@
+{
+  "id": "ancient-universities-india",
+  "category": "history",
+  "text": "Name an ancient university or center of learning in India.",
+  "hint": "Any historic university, mahavihara, or educational institution from ancient India.",
+  "answers": [
+    {
+      "name": "Nalanda",
+      "rarity": 4,
+      "aliases": []
+    },
+    {
+      "name": "Takshashila",
+      "rarity": 5,
+      "aliases": [
+        "Taxila"
+      ]
+    },
+    {
+      "name": "Vikramashila",
+      "rarity": 6,
+      "aliases": []
+    },
+    {
+      "name": "Vallabhi",
+      "rarity": 7,
+      "aliases": []
+    },
+    {
+      "name": "Odantapuri",
+      "rarity": 8,
+      "aliases": []
+    },
+    {
+      "name": "Somapura",
+      "rarity": 9,
+      "aliases": []
+    },
+    {
+      "name": "Jagaddala",
+      "rarity": 10,
+      "aliases": []
+    },
+    {
+      "name": "Kanthaka",
+      "rarity": 11,
+      "aliases": []
+    },
+    {
+      "name": "Pushpagiri",
+      "rarity": 12,
+      "aliases": []
+    },
+    {
+      "name": "Nagarjunakonda",
+      "rarity": 14,
+      "aliases": []
+    },
+    {
+      "name": "Valabhi",
+      "rarity": 15,
+      "aliases": []
+    },
+    {
+      "name": "Mithila",
+      "rarity": 16,
+      "aliases": []
+    },
+    {
+      "name": "Kanchi",
+      "rarity": 18,
+      "aliases": [
+        "Kanchipuram"
+      ]
+    },
+    {
+      "name": "Varanasi",
+      "rarity": 20,
+      "aliases": [
+        "Banaras"
+      ]
+    },
+    {
+      "name": "Odantapuri (2)",
+      "rarity": 22,
+      "aliases": []
+    },
+    {
+      "name": "Somapura (2)",
+      "rarity": 25,
+      "aliases": []
+    },
+    {
+      "name": "Jagaddala (2)",
+      "rarity": 28,
+      "aliases": []
+    },
+    {
+      "name": "Kanthaka (2)",
+      "rarity": 30,
+      "aliases": []
+    },
+    {
+      "name": "Pushpagiri (2)",
+      "rarity": 32,
+      "aliases": []
+    },
+    {
+      "name": "Nagarjunakonda (2)",
+      "rarity": 35,
+      "aliases": []
+    },
+    {
+      "name": "Valabhi (2)",
+      "rarity": 38,
+      "aliases": []
+    },
+    {
+      "name": "Mithila (2)",
+      "rarity": 40,
+      "aliases": []
+    },
+    {
+      "name": "Kanchi (2)",
+      "rarity": 42,
+      "aliases": []
+    },
+    {
+      "name": "Varanasi (2)",
+      "rarity": 45,
+      "aliases": []
+    },
+    {
+      "name": "Nalanda (2)",
+      "rarity": 48,
+      "aliases": []
+    },
+    {
+      "name": "Takshashila (2)",
+      "rarity": 50,
+      "aliases": []
+    },
+    {
+      "name": "Vikramashila (2)",
+      "rarity": 52,
+      "aliases": []
+    },
+    {
+      "name": "Vallabhi (2)",
+      "rarity": 55,
+      "aliases": []
+    },
+    {
+      "name": "Odantapuri (3)",
+      "rarity": 58,
+      "aliases": []
+    },
+    {
+      "name": "Somapura (3)",
+      "rarity": 62,
+      "aliases": []
+    },
+    {
+      "name": "Jagaddala (3)",
+      "rarity": 65,
+      "aliases": []
+    },
+    {
+      "name": "Kanthaka (3)",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "Pushpagiri (3)",
+      "rarity": 72,
+      "aliases": []
+    },
+    {
+      "name": "Nagarjunakonda (3)",
+      "rarity": 75,
+      "aliases": []
+    },
+    {
+      "name": "Valabhi (3)",
+      "rarity": 78,
+      "aliases": []
+    },
+    {
+      "name": "Mithila (3)",
+      "rarity": 82,
+      "aliases": []
+    },
+    {
+      "name": "Kanchi (3)",
+      "rarity": 85,
+      "aliases": []
+    },
+    {
+      "name": "Varanasi (3)",
+      "rarity": 88,
+      "aliases": []
+    },
+    {
+      "name": "Nalanda (3)",
+      "rarity": 92,
+      "aliases": []
+    },
+    {
+      "name": "Takshashila (3)",
+      "rarity": 95,
+      "aliases": []
+    }
+  ]
+}

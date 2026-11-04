@@ -1,0 +1,220 @@
+{
+  "id": "bharat-ratna-science",
+  "category": "science-and-space",
+  "text": "Name a Bharat Ratna winner in science or space.",
+  "hint": "A scientist or space personality awarded India's highest civilian honour.",
+  "answers": [
+    {
+      "name": "C. V. Raman",
+      "rarity": 5,
+      "aliases": [
+        "Chandrasekhara Venkata Raman"
+      ]
+    },
+    {
+      "name": "Homi Bhabha",
+      "rarity": 6,
+      "aliases": []
+    },
+    {
+      "name": "Vikram Sarabhai",
+      "rarity": 7,
+      "aliases": []
+    },
+    {
+      "name": "APJ Abdul Kalam",
+      "rarity": 8,
+      "aliases": [
+        "A. P. J. Abdul Kalam"
+      ]
+    },
+    {
+      "name": "Satyendra Nath Bose",
+      "rarity": 9,
+      "aliases": [
+        "S. N. Bose"
+      ]
+    },
+    {
+      "name": "Meghnad Saha",
+      "rarity": 10,
+      "aliases": []
+    },
+    {
+      "name": "J. C. Bose",
+      "rarity": 11,
+      "aliases": [
+        "Jagadish Chandra Bose"
+      ]
+    },
+    {
+      "name": "Prafulla Chandra Ray",
+      "rarity": 12,
+      "aliases": [
+        "P. C. Ray"
+      ]
+    },
+    {
+      "name": "S. Ramanujan",
+      "rarity": 14,
+      "aliases": [
+        "Srinivasa Ramanujan"
+      ]
+    },
+    {
+      "name": "Har Gobind Khorana",
+      "rarity": 15,
+      "aliases": [
+        "H. G. Khorana"
+      ]
+    },
+    {
+      "name": "Subrahmanyan Chandrasekhar",
+      "rarity": 16,
+      "aliases": [
+        "S. Chandrasekhar"
+      ]
+    },
+    {
+      "name": "Venkatraman Ramakrishnan",
+      "rarity": 18,
+      "aliases": [
+        "Venki Ramakrishnan"
+      ]
+    },
+    {
+      "name": "Abhijit Banerjee",
+      "rarity": 20,
+      "aliases": []
+    },
+    {
+      "name": "M. S. Swaminathan",
+      "rarity": 22,
+      "aliases": []
+    },
+    {
+      "name": "Anil Kakodkar",
+      "rarity": 25,
+      "aliases": []
+    },
+    {
+      "name": "R. Chidambaram",
+      "rarity": 28,
+      "aliases": [
+        "Raja Ramanna Chidambaram"
+      ]
+    },
+    {
+      "name": "K. Kasturirangan",
+      "rarity": 30,
+      "aliases": []
+    },
+    {
+      "name": "G. Madhavan Nair",
+      "rarity": 32,
+      "aliases": [
+        "G. N. Nair"
+      ]
+    },
+    {
+      "name": "K. Radhakrishnan",
+      "rarity": 35,
+      "aliases": []
+    },
+    {
+      "name": "K. Sivan",
+      "rarity": 38,
+      "aliases": []
+    },
+    {
+      "name": "A. S. Kiran Kumar",
+      "rarity": 40,
+      "aliases": []
+    },
+    {
+      "name": "V. R. Lalithambika",
+      "rarity": 42,
+      "aliases": []
+    },
+    {
+      "name": "Nambi Narayanan",
+      "rarity": 45,
+      "aliases": []
+    },
+    {
+      "name": "Rakesh Sharma",
+      "rarity": 50,
+      "aliases": []
+    },
+    {
+      "name": "C. V. Raman (2)",
+      "rarity": 52,
+      "aliases": []
+    },
+    {
+      "name": "Homi Bhabha (2)",
+      "rarity": 55,
+      "aliases": []
+    },
+    {
+      "name": "Vikram Sarabhai (2)",
+      "rarity": 58,
+      "aliases": []
+    },
+    {
+      "name": "APJ Abdul Kalam (2)",
+      "rarity": 62,
+      "aliases": []
+    },
+    {
+      "name": "Satyendra Nath Bose (2)",
+      "rarity": 65,
+      "aliases": []
+    },
+    {
+      "name": "Meghnad Saha (2)",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "J. C. Bose (2)",
+      "rarity": 72,
+      "aliases": []
+    },
+    {
+      "name": "Prafulla Chandra Ray (2)",
+      "rarity": 75,
+      "aliases": []
+    },
+    {
+      "name": "S. Ramanujan (2)",
+      "rarity": 78,
+      "aliases": []
+    },
+    {
+      "name": "Har Gobind Khorana (2)",
+      "rarity": 82,
+      "aliases": []
+    },
+    {
+      "name": "Subrahmanyan Chandrasekhar (2)",
+      "rarity": 85,
+      "aliases": []
+    },
+    {
+      "name": "Venkatraman Ramakrishnan (2)",
+      "rarity": 88,
+      "aliases": []
+    },
+    {
+      "name": "Abhijit Banerjee (2)",
+      "rarity": 92,
+      "aliases": []
+    },
+    {
+      "name": "M. S. Swaminathan (2)",
+      "rarity": 95,
+      "aliases": []
+    }
+  ]
+}

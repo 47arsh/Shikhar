@@ -1,0 +1,273 @@
+{
+  "id": "railway-stations-india",
+  "category": "transport",
+  "text": "Name a major railway station in India.",
+  "hint": "Any important or historic railway station in the Indian Railways network.",
+  "answers": [
+    {
+      "name": "Howrah Junction",
+      "rarity": 4,
+      "aliases": [
+        "Howrah"
+      ]
+    },
+    {
+      "name": "Sealdah",
+      "rarity": 5,
+      "aliases": []
+    },
+    {
+      "name": "Chhatrapati Shivaji Terminus",
+      "rarity": 6,
+      "aliases": [
+        "CST",
+        "VT"
+      ]
+    },
+    {
+      "name": "New Delhi Railway Station",
+      "rarity": 7,
+      "aliases": [
+        "NDLS"
+      ]
+    },
+    {
+      "name": "Mumbai Central",
+      "rarity": 8,
+      "aliases": []
+    },
+    {
+      "name": "Chennai Central",
+      "rarity": 9,
+      "aliases": [
+        "Mas"
+      ]
+    },
+    {
+      "name": "Bangalore City",
+      "rarity": 10,
+      "aliases": [
+        "SBC"
+      ]
+    },
+    {
+      "name": "Hyderabad Deccan",
+      "rarity": 11,
+      "aliases": [
+        "Nampally"
+      ]
+    },
+    {
+      "name": "Pune Junction",
+      "rarity": 12,
+      "aliases": [
+        "Pune"
+      ]
+    },
+    {
+      "name": "Ahmedabad Junction",
+      "rarity": 14,
+      "aliases": [
+        "ADI"
+      ]
+    },
+    {
+      "name": "Kolkata Station",
+      "rarity": 15,
+      "aliases": [
+        "Kolkata"
+      ]
+    },
+    {
+      "name": "Delhi Junction",
+      "rarity": 16,
+      "aliases": [
+        "Old Delhi"
+      ]
+    },
+    {
+      "name": "Mumbai VT",
+      "rarity": 18,
+      "aliases": [
+        "Victoria Terminus"
+      ]
+    },
+    {
+      "name": "Chennai Egmore",
+      "rarity": 20,
+      "aliases": []
+    },
+    {
+      "name": "Bangalore Cantonment",
+      "rarity": 22,
+      "aliases": [
+        "BNC"
+      ]
+    },
+    {
+      "name": "Secunderabad",
+      "rarity": 25,
+      "aliases": []
+    },
+    {
+      "name": "Vijayawada Junction",
+      "rarity": 28,
+      "aliases": [
+        "BZA"
+      ]
+    },
+    {
+      "name": "Visakhapatnam Junction",
+      "rarity": 30,
+      "aliases": [
+        "VSKP"
+      ]
+    },
+    {
+      "name": "Bilaspur Junction",
+      "rarity": 32,
+      "aliases": []
+    },
+    {
+      "name": "Nagpur Junction",
+      "rarity": 35,
+      "aliases": [
+        "NGP"
+      ]
+    },
+    {
+      "name": "Bhopal Junction",
+      "rarity": 38,
+      "aliases": []
+    },
+    {
+      "name": "Itarsi Junction",
+      "rarity": 40,
+      "aliases": [
+        "ET"
+      ]
+    },
+    {
+      "name": "Jhansi Junction",
+      "rarity": 42,
+      "aliases": [
+        "JHS"
+      ]
+    },
+    {
+      "name": "Agra Cantonment",
+      "rarity": 45,
+      "aliases": [
+        "AGC"
+      ]
+    },
+    {
+      "name": "Jaipur Junction",
+      "rarity": 48,
+      "aliases": [
+        "JP"
+      ]
+    },
+    {
+      "name": "Jodhpur Junction",
+      "rarity": 50,
+      "aliases": [
+        "JU"
+      ]
+    },
+    {
+      "name": "Bikaner Junction",
+      "rarity": 52,
+      "aliases": [
+        "BKN"
+      ]
+    },
+    {
+      "name": "Jaisalmer Railway Station",
+      "rarity": 55,
+      "aliases": []
+    },
+    {
+      "name": "Udaipur City",
+      "rarity": 58,
+      "aliases": [
+        "UDZ"
+      ]
+    },
+    {
+      "name": "Ajmer Junction",
+      "rarity": 62,
+      "aliases": [
+        "AII"
+      ]
+    },
+    {
+      "name": "Kota Junction",
+      "rarity": 65,
+      "aliases": [
+        "KOTA"
+      ]
+    },
+    {
+      "name": "Sawai Madhopur",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "Bharatpur Junction",
+      "rarity": 72,
+      "aliases": [
+        "BTE"
+      ]
+    },
+    {
+      "name": "Alwar Junction",
+      "rarity": 75,
+      "aliases": [
+        "AWR"
+      ]
+    },
+    {
+      "name": "Rewari Junction",
+      "rarity": 78,
+      "aliases": [
+        "RE"
+      ]
+    },
+    {
+      "name": "Gurgaon Railway Station",
+      "rarity": 82,
+      "aliases": [
+        "GGN"
+      ]
+    },
+    {
+      "name": "Faridabad Railway Station",
+      "rarity": 85,
+      "aliases": [
+        "FDB"
+      ]
+    },
+    {
+      "name": "Ghaziabad Junction",
+      "rarity": 88,
+      "aliases": [
+        "GZB"
+      ]
+    },
+    {
+      "name": "Meerut City",
+      "rarity": 92,
+      "aliases": [
+        "MUT"
+      ]
+    },
+    {
+      "name": "Muzaffarnagar",
+      "rarity": 95,
+      "aliases": [
+        "MZN"
+      ]
+    }
+  ]
+}

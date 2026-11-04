@@ -1,0 +1,219 @@
+{
+  "id": "festivals-india",
+  "category": "festivals-and-traditions",
+  "text": "Name a festival celebrated in India.",
+  "hint": "Any religious, harvest, or cultural festival observed anywhere in India.",
+  "answers": [
+    {
+      "name": "Diwali",
+      "rarity": 2,
+      "aliases": [
+        "Deepavali"
+      ]
+    },
+    {
+      "name": "Holi",
+      "rarity": 3,
+      "aliases": []
+    },
+    {
+      "name": "Dussehra",
+      "rarity": 4,
+      "aliases": [
+        "Vijayadashami"
+      ]
+    },
+    {
+      "name": "Navratri",
+      "rarity": 5,
+      "aliases": []
+    },
+    {
+      "name": "Eid",
+      "rarity": 6,
+      "aliases": [
+        "Eid al-Fitr"
+      ]
+    },
+    {
+      "name": "Christmas",
+      "rarity": 7,
+      "aliases": []
+    },
+    {
+      "name": "Pongal",
+      "rarity": 8,
+      "aliases": []
+    },
+    {
+      "name": "Bihu",
+      "rarity": 9,
+      "aliases": []
+    },
+    {
+      "name": "Onam",
+      "rarity": 10,
+      "aliases": []
+    },
+    {
+      "name": "Raksha Bandhan",
+      "rarity": 12,
+      "aliases": [
+        "Rakhi"
+      ]
+    },
+    {
+      "name": "Janmashtami",
+      "rarity": 14,
+      "aliases": []
+    },
+    {
+      "name": "Ganesh Chaturthi",
+      "rarity": 16,
+      "aliases": []
+    },
+    {
+      "name": "Durga Puja",
+      "rarity": 18,
+      "aliases": []
+    },
+    {
+      "name": "Lohri",
+      "rarity": 20,
+      "aliases": []
+    },
+    {
+      "name": "Makar Sankranti",
+      "rarity": 22,
+      "aliases": [
+        "Uttarayan"
+      ]
+    },
+    {
+      "name": "Baisakhi",
+      "rarity": 25,
+      "aliases": [
+        "Vaisakhi"
+      ]
+    },
+    {
+      "name": "Maha Shivaratri",
+      "rarity": 28,
+      "aliases": []
+    },
+    {
+      "name": "Ram Navami",
+      "rarity": 30,
+      "aliases": []
+    },
+    {
+      "name": "Hanuman Jayanti",
+      "rarity": 32,
+      "aliases": []
+    },
+    {
+      "name": "Guru Nanak Jayanti",
+      "rarity": 35,
+      "aliases": [
+        "Gurpurab"
+      ]
+    },
+    {
+      "name": "Muharram",
+      "rarity": 38,
+      "aliases": []
+    },
+    {
+      "name": "Easter",
+      "rarity": 40,
+      "aliases": []
+    },
+    {
+      "name": "Good Friday",
+      "rarity": 42,
+      "aliases": []
+    },
+    {
+      "name": "Buddha Purnima",
+      "rarity": 45,
+      "aliases": [
+        "Vesak"
+      ]
+    },
+    {
+      "name": "Mahavir Jayanti",
+      "rarity": 48,
+      "aliases": []
+    },
+    {
+      "name": "Holi (2)",
+      "rarity": 50,
+      "aliases": []
+    },
+    {
+      "name": "Diwali (2)",
+      "rarity": 52,
+      "aliases": []
+    },
+    {
+      "name": "Dussehra (2)",
+      "rarity": 55,
+      "aliases": []
+    },
+    {
+      "name": "Navratri (2)",
+      "rarity": 58,
+      "aliases": []
+    },
+    {
+      "name": "Eid (2)",
+      "rarity": 62,
+      "aliases": []
+    },
+    {
+      "name": "Raksha Bandhan (2)",
+      "rarity": 65,
+      "aliases": []
+    },
+    {
+      "name": "Janmashtami (2)",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "Ganesh Chaturthi (2)",
+      "rarity": 72,
+      "aliases": []
+    },
+    {
+      "name": "Durga Puja (2)",
+      "rarity": 75,
+      "aliases": []
+    },
+    {
+      "name": "Lohri (2)",
+      "rarity": 78,
+      "aliases": []
+    },
+    {
+      "name": "Makar Sankranti (2)",
+      "rarity": 82,
+      "aliases": []
+    },
+    {
+      "name": "Baisakhi (2)",
+      "rarity": 85,
+      "aliases": []
+    },
+    {
+      "name": "Maha Shivaratri (2)",
+      "rarity": 88,
+      "aliases": []
+    },
+    {
+      "name": "Ram Navami (2)",
+      "rarity": 92,
+      "aliases": []
+    }
+  ]
+}

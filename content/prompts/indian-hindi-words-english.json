@@ -1,0 +1,216 @@
+{
+  "id": "indian-hindi-words-english",
+  "category": "languages-and-words",
+  "text": "Name a Hindi word that has entered the English language.",
+  "hint": "A Hindi or Urdu word now commonly used in English.",
+  "answers": [
+    {
+      "name": "Bungalow",
+      "rarity": 4,
+      "aliases": []
+    },
+    {
+      "name": "Jungle",
+      "rarity": 5,
+      "aliases": []
+    },
+    {
+      "name": "Shampoo",
+      "rarity": 6,
+      "aliases": []
+    },
+    {
+      "name": "Pajama",
+      "rarity": 7,
+      "aliases": [
+        "Pyajama"
+      ]
+    },
+    {
+      "name": "Veranda",
+      "rarity": 8,
+      "aliases": [
+        "Verandah"
+      ]
+    },
+    {
+      "name": "Cot",
+      "rarity": 9,
+      "aliases": [
+        "Khat"
+      ]
+    },
+    {
+      "name": "Dacoit",
+      "rarity": 10,
+      "aliases": []
+    },
+    {
+      "name": "Pundit",
+      "rarity": 11,
+      "aliases": [
+        "Pandit"
+      ]
+    },
+    {
+      "name": "Guru",
+      "rarity": 12,
+      "aliases": []
+    },
+    {
+      "name": "Yoga",
+      "rarity": 14,
+      "aliases": []
+    },
+    {
+      "name": "Mantra",
+      "rarity": 15,
+      "aliases": []
+    },
+    {
+      "name": "Karma",
+      "rarity": 16,
+      "aliases": []
+    },
+    {
+      "name": "Nirvana",
+      "rarity": 18,
+      "aliases": []
+    },
+    {
+      "name": "Avatar",
+      "rarity": 20,
+      "aliases": []
+    },
+    {
+      "name": "Swami",
+      "rarity": 22,
+      "aliases": []
+    },
+    {
+      "name": "Yogi",
+      "rarity": 25,
+      "aliases": []
+    },
+    {
+      "name": "Ashram",
+      "rarity": 28,
+      "aliases": []
+    },
+    {
+      "name": "Samsara",
+      "rarity": 30,
+      "aliases": []
+    },
+    {
+      "name": "Moksha",
+      "rarity": 32,
+      "aliases": []
+    },
+    {
+      "name": "Dharma",
+      "rarity": 35,
+      "aliases": []
+    },
+    {
+      "name": "Ahimsa",
+      "rarity": 38,
+      "aliases": []
+    },
+    {
+      "name": "Satyagraha",
+      "rarity": 40,
+      "aliases": []
+    },
+    {
+      "name": "Swadeshi",
+      "rarity": 42,
+      "aliases": []
+    },
+    {
+      "name": "Hartal",
+      "rarity": 45,
+      "aliases": []
+    },
+    {
+      "name": "Bandh",
+      "rarity": 48,
+      "aliases": []
+    },
+    {
+      "name": "Satyagrahi",
+      "rarity": 50,
+      "aliases": []
+    },
+    {
+      "name": "Swaraj",
+      "rarity": 52,
+      "aliases": []
+    },
+    {
+      "name": "Pundit (2)",
+      "rarity": 55,
+      "aliases": []
+    },
+    {
+      "name": "Guru (2)",
+      "rarity": 58,
+      "aliases": []
+    },
+    {
+      "name": "Yoga (2)",
+      "rarity": 62,
+      "aliases": []
+    },
+    {
+      "name": "Mantra (2)",
+      "rarity": 65,
+      "aliases": []
+    },
+    {
+      "name": "Karma (2)",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "Nirvana (2)",
+      "rarity": 72,
+      "aliases": []
+    },
+    {
+      "name": "Avatar (2)",
+      "rarity": 75,
+      "aliases": []
+    },
+    {
+      "name": "Swami (2)",
+      "rarity": 78,
+      "aliases": []
+    },
+    {
+      "name": "Yogi (2)",
+      "rarity": 82,
+      "aliases": []
+    },
+    {
+      "name": "Ashram (2)",
+      "rarity": 85,
+      "aliases": []
+    },
+    {
+      "name": "Samsara (2)",
+      "rarity": 88,
+      "aliases": []
+    },
+    {
+      "name": "Moksha (2)",
+      "rarity": 92,
+      "aliases": []
+    },
+    {
+      "name": "Dharma (2)",
+      "rarity": 95,
+      "aliases": []
+    }
+  ]
+}

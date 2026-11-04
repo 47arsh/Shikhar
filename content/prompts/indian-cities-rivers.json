@@ -1,0 +1,222 @@
+{
+  "id": "indian-cities-rivers",
+  "category": "states-and-cities",
+  "text": "Name a city located on the banks of a river in India.",
+  "hint": "Any Indian city situated on a river.",
+  "answers": [
+    {
+      "name": "Varanasi",
+      "rarity": 3,
+      "aliases": [
+        "Banaras",
+        "Kashi"
+      ]
+    },
+    {
+      "name": "Kolkata",
+      "rarity": 4,
+      "aliases": [
+        "Calcutta"
+      ]
+    },
+    {
+      "name": "Ahmedabad",
+      "rarity": 5,
+      "aliases": []
+    },
+    {
+      "name": "Lucknow",
+      "rarity": 6,
+      "aliases": []
+    },
+    {
+      "name": "Kanpur",
+      "rarity": 7,
+      "aliases": []
+    },
+    {
+      "name": "Patna",
+      "rarity": 8,
+      "aliases": []
+    },
+    {
+      "name": "Agra",
+      "rarity": 9,
+      "aliases": []
+    },
+    {
+      "name": "Prayagraj",
+      "rarity": 10,
+      "aliases": [
+        "Allahabad"
+      ]
+    },
+    {
+      "name": "Vijayawada",
+      "rarity": 11,
+      "aliases": []
+    },
+    {
+      "name": "Nashik",
+      "rarity": 12,
+      "aliases": []
+    },
+    {
+      "name": "Ayodhya",
+      "rarity": 14,
+      "aliases": []
+    },
+    {
+      "name": "Mathura",
+      "rarity": 15,
+      "aliases": []
+    },
+    {
+      "name": "Vrindavan",
+      "rarity": 16,
+      "aliases": []
+    },
+    {
+      "name": "Ujjain",
+      "rarity": 18,
+      "aliases": []
+    },
+    {
+      "name": "Rajkot",
+      "rarity": 22,
+      "aliases": []
+    },
+    {
+      "name": "Surat",
+      "rarity": 25,
+      "aliases": []
+    },
+    {
+      "name": "Jamnagar",
+      "rarity": 28,
+      "aliases": []
+    },
+    {
+      "name": "Bharuch",
+      "rarity": 30,
+      "aliases": []
+    },
+    {
+      "name": "Kolhapur",
+      "rarity": 32,
+      "aliases": []
+    },
+    {
+      "name": "Sangli",
+      "rarity": 35,
+      "aliases": []
+    },
+    {
+      "name": "Solapur",
+      "rarity": 38,
+      "aliases": []
+    },
+    {
+      "name": "Nanded",
+      "rarity": 40,
+      "aliases": []
+    },
+    {
+      "name": "Aurangabad",
+      "rarity": 42,
+      "aliases": [
+        "Chhatrapati Sambhaji Nagar"
+      ]
+    },
+    {
+      "name": "Nagpur",
+      "rarity": 45,
+      "aliases": []
+    },
+    {
+      "name": "Jabalpur",
+      "rarity": 48,
+      "aliases": []
+    },
+    {
+      "name": "Gwalior",
+      "rarity": 50,
+      "aliases": []
+    },
+    {
+      "name": "Bhopal",
+      "rarity": 52,
+      "aliases": []
+    },
+    {
+      "name": "Indore",
+      "rarity": 55,
+      "aliases": []
+    },
+    {
+      "name": "Ujjain (2)",
+      "rarity": 58,
+      "aliases": []
+    },
+    {
+      "name": "Sagar",
+      "rarity": 62,
+      "aliases": []
+    },
+    {
+      "name": "Rewa",
+      "rarity": 65,
+      "aliases": []
+    },
+    {
+      "name": "Satna",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "Bilaspur",
+      "rarity": 72,
+      "aliases": []
+    },
+    {
+      "name": "Raipur",
+      "rarity": 75,
+      "aliases": []
+    },
+    {
+      "name": "Durg",
+      "rarity": 78,
+      "aliases": []
+    },
+    {
+      "name": "Bhilai",
+      "rarity": 82,
+      "aliases": []
+    },
+    {
+      "name": "Korba",
+      "rarity": 85,
+      "aliases": []
+    },
+    {
+      "name": "Raigarh",
+      "rarity": 88,
+      "aliases": []
+    },
+    {
+      "name": "Jagdalpur",
+      "rarity": 92,
+      "aliases": []
+    },
+    {
+      "name": "Ambikapur",
+      "rarity": 95,
+      "aliases": []
+    },
+    {
+      "name": "Dantewada",
+      "rarity": 98,
+      "aliases": []
+    }
+  ]
+}

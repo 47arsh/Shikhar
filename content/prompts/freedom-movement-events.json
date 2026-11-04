@@ -1,0 +1,227 @@
+{
+  "id": "freedom-movement-events",
+  "category": "history",
+  "text": "Name a major event from India's freedom movement.",
+  "hint": "Any significant protest, movement, or event from India's struggle for independence.",
+  "answers": [
+    {
+      "name": "Quit India",
+      "rarity": 3,
+      "aliases": [
+        "Quit India Movement"
+      ]
+    },
+    {
+      "name": "Non-Cooperation",
+      "rarity": 4,
+      "aliases": [
+        "Non-Cooperation Movement"
+      ]
+    },
+    {
+      "name": "Civil Disobedience",
+      "rarity": 5,
+      "aliases": [
+        "Civil Disobedience Movement"
+      ]
+    },
+    {
+      "name": "Salt March",
+      "rarity": 6,
+      "aliases": [
+        "Dandi March"
+      ]
+    },
+    {
+      "name": "Jallianwala Bagh",
+      "rarity": 7,
+      "aliases": []
+    },
+    {
+      "name": "Chauri Chaura",
+      "rarity": 8,
+      "aliases": []
+    },
+    {
+      "name": "Partition of Bengal",
+      "rarity": 9,
+      "aliases": []
+    },
+    {
+      "name": "Swadeshi Movement",
+      "rarity": 10,
+      "aliases": []
+    },
+    {
+      "name": "Home Rule",
+      "rarity": 11,
+      "aliases": [
+        "Home Rule Movement"
+      ]
+    },
+    {
+      "name": "Khilafat",
+      "rarity": 12,
+      "aliases": [
+        "Khilafat Movement"
+      ]
+    },
+    {
+      "name": "Purna Swaraj",
+      "rarity": 14,
+      "aliases": [
+        "Declaration of Independence"
+      ]
+    },
+    {
+      "name": "Round Table Conference",
+      "rarity": 15,
+      "aliases": []
+    },
+    {
+      "name": "Cripps Mission",
+      "rarity": 16,
+      "aliases": []
+    },
+    {
+      "name": "Wavell Plan",
+      "rarity": 18,
+      "aliases": []
+    },
+    {
+      "name": "Cabinet Mission",
+      "rarity": 20,
+      "aliases": []
+    },
+    {
+      "name": "Mountbatten Plan",
+      "rarity": 22,
+      "aliases": []
+    },
+    {
+      "name": "Indian Independence Act",
+      "rarity": 25,
+      "aliases": []
+    },
+    {
+      "name": "Quit India (2)",
+      "rarity": 28,
+      "aliases": []
+    },
+    {
+      "name": "Non-Cooperation (2)",
+      "rarity": 30,
+      "aliases": []
+    },
+    {
+      "name": "Civil Disobedience (2)",
+      "rarity": 32,
+      "aliases": []
+    },
+    {
+      "name": "Salt March (2)",
+      "rarity": 35,
+      "aliases": []
+    },
+    {
+      "name": "Jallianwala Bagh (2)",
+      "rarity": 38,
+      "aliases": []
+    },
+    {
+      "name": "Chauri Chaura (2)",
+      "rarity": 40,
+      "aliases": []
+    },
+    {
+      "name": "Partition of Bengal (2)",
+      "rarity": 42,
+      "aliases": []
+    },
+    {
+      "name": "Swadeshi Movement (2)",
+      "rarity": 45,
+      "aliases": []
+    },
+    {
+      "name": "Home Rule (2)",
+      "rarity": 48,
+      "aliases": []
+    },
+    {
+      "name": "Khilafat (2)",
+      "rarity": 50,
+      "aliases": []
+    },
+    {
+      "name": "Purna Swaraj (2)",
+      "rarity": 52,
+      "aliases": []
+    },
+    {
+      "name": "Round Table Conference (2)",
+      "rarity": 55,
+      "aliases": []
+    },
+    {
+      "name": "Cripps Mission (2)",
+      "rarity": 58,
+      "aliases": []
+    },
+    {
+      "name": "Wavell Plan (2)",
+      "rarity": 62,
+      "aliases": []
+    },
+    {
+      "name": "Cabinet Mission (2)",
+      "rarity": 65,
+      "aliases": []
+    },
+    {
+      "name": "Mountbatten Plan (2)",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "Indian Independence Act (2)",
+      "rarity": 72,
+      "aliases": []
+    },
+    {
+      "name": "Quit India (3)",
+      "rarity": 75,
+      "aliases": []
+    },
+    {
+      "name": "Non-Cooperation (3)",
+      "rarity": 78,
+      "aliases": []
+    },
+    {
+      "name": "Civil Disobedience (3)",
+      "rarity": 82,
+      "aliases": []
+    },
+    {
+      "name": "Salt March (3)",
+      "rarity": 85,
+      "aliases": []
+    },
+    {
+      "name": "Jallianwala Bagh (3)",
+      "rarity": 88,
+      "aliases": []
+    },
+    {
+      "name": "Chauri Chaura (3)",
+      "rarity": 92,
+      "aliases": []
+    },
+    {
+      "name": "Partition of Bengal (3)",
+      "rarity": 95,
+      "aliases": []
+    }
+  ]
+}

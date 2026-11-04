@@ -1,0 +1,242 @@
+{
+  "id": "indian-cricket-captains",
+  "category": "cricket",
+  "text": "Name a famous Indian cricket captain.",
+  "hint": "Any captain who has led the Indian national cricket team.",
+  "answers": [
+    {
+      "name": "MS Dhoni",
+      "rarity": 3,
+      "aliases": [
+        "Mahendra Singh Dhoni"
+      ]
+    },
+    {
+      "name": "Virat Kohli",
+      "rarity": 4,
+      "aliases": []
+    },
+    {
+      "name": "Sourav Ganguly",
+      "rarity": 5,
+      "aliases": [
+        "Dada"
+      ]
+    },
+    {
+      "name": "Mohammad Azharuddin",
+      "rarity": 6,
+      "aliases": []
+    },
+    {
+      "name": "Sunil Gavaskar",
+      "rarity": 7,
+      "aliases": []
+    },
+    {
+      "name": "Kapil Dev",
+      "rarity": 8,
+      "aliases": []
+    },
+    {
+      "name": "Rohit Sharma",
+      "rarity": 9,
+      "aliases": [
+        "Hitman"
+      ]
+    },
+    {
+      "name": "Rahul Dravid",
+      "rarity": 10,
+      "aliases": [
+        "The Wall"
+      ]
+    },
+    {
+      "name": "Sachin Tendulkar",
+      "rarity": 11,
+      "aliases": [
+        "Master Blaster"
+      ]
+    },
+    {
+      "name": "Mansoor Ali Khan Pataudi",
+      "rarity": 12,
+      "aliases": [
+        "Tiger Pataudi"
+      ]
+    },
+    {
+      "name": "CK Nayudu",
+      "rarity": 14,
+      "aliases": [
+        "Cottari Kanakaiya Nayudu"
+      ]
+    },
+    {
+      "name": "Lala Amarnath",
+      "rarity": 15,
+      "aliases": []
+    },
+    {
+      "name": "Vijay Hazare",
+      "rarity": 16,
+      "aliases": []
+    },
+    {
+      "name": "Polly Umrigar",
+      "rarity": 18,
+      "aliases": []
+    },
+    {
+      "name": "Nari Contractor",
+      "rarity": 20,
+      "aliases": []
+    },
+    {
+      "name": "Ajit Wadekar",
+      "rarity": 22,
+      "aliases": []
+    },
+    {
+      "name": "Bishan Singh Bedi",
+      "rarity": 25,
+      "aliases": []
+    },
+    {
+      "name": "Srinivas Venkataraghavan",
+      "rarity": 28,
+      "aliases": []
+    },
+    {
+      "name": "Ravi Shastri",
+      "rarity": 30,
+      "aliases": []
+    },
+    {
+      "name": "Krishnamachari Srikkanth",
+      "rarity": 32,
+      "aliases": [
+        "Kris Srikkanth"
+      ]
+    },
+    {
+      "name": "Virender Sehwag",
+      "rarity": 35,
+      "aliases": []
+    },
+    {
+      "name": "Sourav Ganguly (2)",
+      "rarity": 38,
+      "aliases": []
+    },
+    {
+      "name": "Rahul Dravid (2)",
+      "rarity": 40,
+      "aliases": []
+    },
+    {
+      "name": "MS Dhoni (2)",
+      "rarity": 42,
+      "aliases": []
+    },
+    {
+      "name": "Virat Kohli (2)",
+      "rarity": 45,
+      "aliases": []
+    },
+    {
+      "name": "Rohit Sharma (2)",
+      "rarity": 48,
+      "aliases": []
+    },
+    {
+      "name": "Shikhar Dhawan",
+      "rarity": 50,
+      "aliases": [
+        "Gabbar"
+      ]
+    },
+    {
+      "name": "Ajinkya Rahane",
+      "rarity": 52,
+      "aliases": []
+    },
+    {
+      "name": "KL Rahul",
+      "rarity": 55,
+      "aliases": []
+    },
+    {
+      "name": "Rishabh Pant",
+      "rarity": 58,
+      "aliases": []
+    },
+    {
+      "name": "Hardik Pandya",
+      "rarity": 62,
+      "aliases": []
+    },
+    {
+      "name": "Suryakumar Yadav",
+      "rarity": 65,
+      "aliases": [
+        "SKY"
+      ]
+    },
+    {
+      "name": "Jasprit Bumrah",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "Ravindra Jadeja",
+      "rarity": 72,
+      "aliases": [
+        "Sir Jadeja"
+      ]
+    },
+    {
+      "name": "Ravichandran Ashwin",
+      "rarity": 75,
+      "aliases": [
+        "Ash"
+      ]
+    },
+    {
+      "name": "Kuldeep Yadav",
+      "rarity": 78,
+      "aliases": []
+    },
+    {
+      "name": "Yuzvendra Chahal",
+      "rarity": 82,
+      "aliases": []
+    },
+    {
+      "name": "Shubman Gill",
+      "rarity": 85,
+      "aliases": []
+    },
+    {
+      "name": "Ruturaj Gaikwad",
+      "rarity": 88,
+      "aliases": []
+    },
+    {
+      "name": "Yashasvi Jaiswal",
+      "rarity": 92,
+      "aliases": []
+    },
+    {
+      "name": "Tilak Varma",
+      "rarity": 95,
+      "aliases": []
+    },
+    {
+      "name": "Sanju Samson",
+      "rarity": 98,
+      "aliases": []
+    }
+  ]
+}

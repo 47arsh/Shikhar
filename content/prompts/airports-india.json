@@ -1,0 +1,316 @@
+{
+  "id": "airports-india",
+  "category": "transport",
+  "text": "Name an international airport in India.",
+  "hint": "Any airport in India with international flights.",
+  "answers": [
+    {
+      "name": "Indira Gandhi International",
+      "rarity": 4,
+      "aliases": [
+        "DEL",
+        "Delhi Airport"
+      ]
+    },
+    {
+      "name": "Chhatrapati Shivaji Maharaj International",
+      "rarity": 5,
+      "aliases": [
+        "BOM",
+        "Mumbai Airport"
+      ]
+    },
+    {
+      "name": "Kempegowda International",
+      "rarity": 6,
+      "aliases": [
+        "BLR",
+        "Bangalore Airport"
+      ]
+    },
+    {
+      "name": "Chennai International",
+      "rarity": 7,
+      "aliases": [
+        "MAA"
+      ]
+    },
+    {
+      "name": "Netaji Subhas Chandra Bose International",
+      "rarity": 8,
+      "aliases": [
+        "CCU",
+        "Kolkata Airport"
+      ]
+    },
+    {
+      "name": "Rajiv Gandhi International",
+      "rarity": 9,
+      "aliases": [
+        "HYD",
+        "Hyderabad Airport"
+      ]
+    },
+    {
+      "name": "Cochin International",
+      "rarity": 10,
+      "aliases": [
+        "COK",
+        "Kochi Airport"
+      ]
+    },
+    {
+      "name": "Goa International",
+      "rarity": 11,
+      "aliases": [
+        "GOI",
+        "Dabolim"
+      ]
+    },
+    {
+      "name": "Trivandrum International",
+      "rarity": 12,
+      "aliases": [
+        "TRV"
+      ]
+    },
+    {
+      "name": "Sardar Vallabhbhai Patel International",
+      "rarity": 14,
+      "aliases": [
+        "AMD",
+        "Ahmedabad Airport"
+      ]
+    },
+    {
+      "name": "Pune International",
+      "rarity": 15,
+      "aliases": [
+        "PNQ",
+        "Lohegaon"
+      ]
+    },
+    {
+      "name": "Jaipur International",
+      "rarity": 16,
+      "aliases": [
+        "JAI"
+      ]
+    },
+    {
+      "name": "Lucknow International",
+      "rarity": 18,
+      "aliases": [
+        "LKO",
+        "Amausi"
+      ]
+    },
+    {
+      "name": "Varanasi International",
+      "rarity": 20,
+      "aliases": [
+        "VNS",
+        "Babatpur"
+      ]
+    },
+    {
+      "name": "Amritsar International",
+      "rarity": 22,
+      "aliases": [
+        "ATQ",
+        "Raja Sansi"
+      ]
+    },
+    {
+      "name": "Chandigarh International",
+      "rarity": 25,
+      "aliases": [
+        "IXC"
+      ]
+    },
+    {
+      "name": "Bhubaneswar International",
+      "rarity": 28,
+      "aliases": [
+        "BBI"
+      ]
+    },
+    {
+      "name": "Guwahati International",
+      "rarity": 30,
+      "aliases": [
+        "GAU",
+        "LGBI"
+      ]
+    },
+    {
+      "name": "Bagdogra International",
+      "rarity": 32,
+      "aliases": [
+        "IXB"
+      ]
+    },
+    {
+      "name": "Imphal International",
+      "rarity": 35,
+      "aliases": [
+        "IMF"
+      ]
+    },
+    {
+      "name": "Agartala International",
+      "rarity": 38,
+      "aliases": [
+        "IXA"
+      ]
+    },
+    {
+      "name": "Aizawl International",
+      "rarity": 40,
+      "aliases": [
+        "AJL",
+        "Lengpui"
+      ]
+    },
+    {
+      "name": "Dimapur International",
+      "rarity": 42,
+      "aliases": [
+        "DMU"
+      ]
+    },
+    {
+      "name": "Dibrugarh International",
+      "rarity": 45,
+      "aliases": [
+        "DIB",
+        "Mohanbari"
+      ]
+    },
+    {
+      "name": "Jorhat International",
+      "rarity": 48,
+      "aliases": [
+        "JRH",
+        "Rowriah"
+      ]
+    },
+    {
+      "name": "Silchar International",
+      "rarity": 50,
+      "aliases": [
+        "IXS",
+        "Kumbhirgram"
+      ]
+    },
+    {
+      "name": "Agatti Airport",
+      "rarity": 52,
+      "aliases": [
+        "AGX"
+      ]
+    },
+    {
+      "name": "Kozhikode International",
+      "rarity": 55,
+      "aliases": [
+        "CCJ",
+        "Calicut"
+      ]
+    },
+    {
+      "name": "Kannur International",
+      "rarity": 58,
+      "aliases": [
+        "CNN"
+      ]
+    },
+    {
+      "name": "Madurai International",
+      "rarity": 62,
+      "aliases": [
+        "IXM"
+      ]
+    },
+    {
+      "name": "Tiruchirappalli International",
+      "rarity": 65,
+      "aliases": [
+        "TRZ",
+        "Trichy"
+      ]
+    },
+    {
+      "name": "Coimbatore International",
+      "rarity": 68,
+      "aliases": [
+        "CJB"
+      ]
+    },
+    {
+      "name": "Tuticorin Airport",
+      "rarity": 72,
+      "aliases": [
+        "TCR",
+        "Vagaikulam"
+      ]
+    },
+    {
+      "name": "Salem Airport",
+      "rarity": 75,
+      "aliases": [
+        "SXV"
+      ]
+    },
+    {
+      "name": "Hubballi Airport",
+      "rarity": 78,
+      "aliases": [
+        "HBX"
+      ]
+    },
+    {
+      "name": "Belagavi Airport",
+      "rarity": 82,
+      "aliases": [
+        "IXG"
+      ]
+    },
+    {
+      "name": "Mangaluru International",
+      "rarity": 85,
+      "aliases": [
+        "IXE",
+        "Bajpe"
+      ]
+    },
+    {
+      "name": "Vijayawada International",
+      "rarity": 88,
+      "aliases": [
+        "VGA"
+      ]
+    },
+    {
+      "name": "Rajahmundry Airport",
+      "rarity": 92,
+      "aliases": [
+        "RJA"
+      ]
+    },
+    {
+      "name": "Visakhapatnam International",
+      "rarity": 95,
+      "aliases": [
+        "VTZ"
+      ]
+    },
+    {
+      "name": "Tirupati Airport",
+      "rarity": 98,
+      "aliases": [
+        "TIR"
+      ]
+    }
+  ]
+}

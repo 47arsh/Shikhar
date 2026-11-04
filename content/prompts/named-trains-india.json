@@ -1,0 +1,213 @@
+{
+  "id": "named-trains-india",
+  "category": "transport",
+  "text": "Name a famous named train in India.",
+  "hint": "Any express, mail, or superfast train with a proper name in Indian Railways.",
+  "answers": [
+    {
+      "name": "Rajdhani Express",
+      "rarity": 4,
+      "aliases": []
+    },
+    {
+      "name": "Shatabdi Express",
+      "rarity": 5,
+      "aliases": []
+    },
+    {
+      "name": "Duronto Express",
+      "rarity": 6,
+      "aliases": []
+    },
+    {
+      "name": "Garib Rath",
+      "rarity": 7,
+      "aliases": []
+    },
+    {
+      "name": "Palace on Wheels",
+      "rarity": 8,
+      "aliases": []
+    },
+    {
+      "name": "Deccan Queen",
+      "rarity": 9,
+      "aliases": []
+    },
+    {
+      "name": "Frontier Mail",
+      "rarity": 10,
+      "aliases": []
+    },
+    {
+      "name": "Grand Trunk Express",
+      "rarity": 11,
+      "aliases": []
+    },
+    {
+      "name": "Himsagar Express",
+      "rarity": 12,
+      "aliases": []
+    },
+    {
+      "name": "Vivek Express",
+      "rarity": 14,
+      "aliases": []
+    },
+    {
+      "name": "Howrah Rajdhani",
+      "rarity": 15,
+      "aliases": []
+    },
+    {
+      "name": "Sealdah Rajdhani",
+      "rarity": 16,
+      "aliases": []
+    },
+    {
+      "name": "Mumbai Rajdhani",
+      "rarity": 18,
+      "aliases": []
+    },
+    {
+      "name": "Chennai Rajdhani",
+      "rarity": 20,
+      "aliases": []
+    },
+    {
+      "name": "Bangalore Rajdhani",
+      "rarity": 22,
+      "aliases": []
+    },
+    {
+      "name": "Hyderabad Rajdhani",
+      "rarity": 25,
+      "aliases": []
+    },
+    {
+      "name": "Ahmedabad Rajdhani",
+      "rarity": 28,
+      "aliases": []
+    },
+    {
+      "name": "Pune Shatabdi",
+      "rarity": 30,
+      "aliases": []
+    },
+    {
+      "name": "Bhopal Shatabdi",
+      "rarity": 32,
+      "aliases": []
+    },
+    {
+      "name": "Chandigarh Shatabdi",
+      "rarity": 35,
+      "aliases": []
+    },
+    {
+      "name": "Amritsar Shatabdi",
+      "rarity": 38,
+      "aliases": []
+    },
+    {
+      "name": "Jaipur Shatabdi",
+      "rarity": 40,
+      "aliases": []
+    },
+    {
+      "name": "Lucknow Shatabdi",
+      "rarity": 42,
+      "aliases": []
+    },
+    {
+      "name": "Patna Rajdhani",
+      "rarity": 45,
+      "aliases": []
+    },
+    {
+      "name": "Ranchi Rajdhani",
+      "rarity": 48,
+      "aliases": []
+    },
+    {
+      "name": "Bhubaneswar Rajdhani",
+      "rarity": 50,
+      "aliases": []
+    },
+    {
+      "name": "Guwahati Rajdhani",
+      "rarity": 52,
+      "aliases": []
+    },
+    {
+      "name": "Dibrugarh Rajdhani",
+      "rarity": 55,
+      "aliases": []
+    },
+    {
+      "name": "Thiruvananthapuram Rajdhani",
+      "rarity": 58,
+      "aliases": []
+    },
+    {
+      "name": "Kochi Rajdhani",
+      "rarity": 62,
+      "aliases": []
+    },
+    {
+      "name": "Coimbatore Shatabdi",
+      "rarity": 65,
+      "aliases": []
+    },
+    {
+      "name": "Madurai Shatabdi",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "Vijayawada Shatabdi",
+      "rarity": 72,
+      "aliases": []
+    },
+    {
+      "name": "Visakhapatnam Shatabdi",
+      "rarity": 75,
+      "aliases": []
+    },
+    {
+      "name": "Goa Express",
+      "rarity": 78,
+      "aliases": []
+    },
+    {
+      "name": "Konkan Kanya Express",
+      "rarity": 82,
+      "aliases": []
+    },
+    {
+      "name": "Mandovi Express",
+      "rarity": 85,
+      "aliases": []
+    },
+    {
+      "name": "Jan Shatabdi",
+      "rarity": 88,
+      "aliases": []
+    },
+    {
+      "name": "Garib Rath Express",
+      "rarity": 92,
+      "aliases": []
+    },
+    {
+      "name": "Udyan Express",
+      "rarity": 95,
+      "aliases": []
+    },
+    {
+      "name": "Chalukya Express",
+      "rarity": 98,
+      "aliases": []
+    }
+  ]
+}

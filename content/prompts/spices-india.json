@@ -1,0 +1,271 @@
+{
+  "id": "spices-india",
+  "category": "nature",
+  "text": "Name a spice grown or used in India.",
+  "hint": "Any spice, herb, or seasoning used in Indian cooking.",
+  "answers": [
+    {
+      "name": "Turmeric",
+      "rarity": 4,
+      "aliases": [
+        "Haldi"
+      ]
+    },
+    {
+      "name": "Cumin",
+      "rarity": 5,
+      "aliases": [
+        "Jeera"
+      ]
+    },
+    {
+      "name": "Coriander",
+      "rarity": 6,
+      "aliases": [
+        "Dhania"
+      ]
+    },
+    {
+      "name": "Cardamom",
+      "rarity": 7,
+      "aliases": [
+        "Elaichi"
+      ]
+    },
+    {
+      "name": "Clove",
+      "rarity": 8,
+      "aliases": [
+        "Laung"
+      ]
+    },
+    {
+      "name": "Cinnamon",
+      "rarity": 9,
+      "aliases": [
+        "Dalchini"
+      ]
+    },
+    {
+      "name": "Fenugreek",
+      "rarity": 10,
+      "aliases": [
+        "Methi"
+      ]
+    },
+    {
+      "name": "Mustard Seeds",
+      "rarity": 11,
+      "aliases": [
+        "Rai",
+        "Sarson"
+      ]
+    },
+    {
+      "name": "Asafoetida",
+      "rarity": 12,
+      "aliases": [
+        "Hing"
+      ]
+    },
+    {
+      "name": "Black Pepper",
+      "rarity": 14,
+      "aliases": [
+        "Kali Mirch"
+      ]
+    },
+    {
+      "name": "Fennel",
+      "rarity": 15,
+      "aliases": [
+        "Saunf"
+      ]
+    },
+    {
+      "name": "Carom Seeds",
+      "rarity": 16,
+      "aliases": [
+        "Ajwain"
+      ]
+    },
+    {
+      "name": "Nigella Seeds",
+      "rarity": 18,
+      "aliases": [
+        "Kalonji"
+      ]
+    },
+    {
+      "name": "Poppy Seeds",
+      "rarity": 20,
+      "aliases": [
+        "Khus Khus"
+      ]
+    },
+    {
+      "name": "Sesame Seeds",
+      "rarity": 22,
+      "aliases": [
+        "Til"
+      ]
+    },
+    {
+      "name": "Star Anise",
+      "rarity": 25,
+      "aliases": [
+        "Chakra Phool"
+      ]
+    },
+    {
+      "name": "Bay Leaf",
+      "rarity": 28,
+      "aliases": [
+        "Tej Patta"
+      ]
+    },
+    {
+      "name": "Nutmeg",
+      "rarity": 30,
+      "aliases": [
+        "Jaiphal"
+      ]
+    },
+    {
+      "name": "Mace",
+      "rarity": 32,
+      "aliases": [
+        "Javitri"
+      ]
+    },
+    {
+      "name": "Saffron",
+      "rarity": 35,
+      "aliases": [
+        "Kesar"
+      ]
+    },
+    {
+      "name": "Tamarind",
+      "rarity": 38,
+      "aliases": [
+        "Imli"
+      ]
+    },
+    {
+      "name": "Curry Leaves",
+      "rarity": 40,
+      "aliases": [
+        "Kadi Patta"
+      ]
+    },
+    {
+      "name": "Dried Mango Powder",
+      "rarity": 42,
+      "aliases": [
+        "Amchur"
+      ]
+    },
+    {
+      "name": "Black Salt",
+      "rarity": 45,
+      "aliases": [
+        "Kala Namak"
+      ]
+    },
+    {
+      "name": "Rock Salt",
+      "rarity": 48,
+      "aliases": [
+        "Sendha Namak"
+      ]
+    },
+    {
+      "name": "Dried Red Chili",
+      "rarity": 50,
+      "aliases": [
+        "Sukhi Lal Mirch"
+      ]
+    },
+    {
+      "name": "Green Chili",
+      "rarity": 52,
+      "aliases": [
+        "Hari Mirch"
+      ]
+    },
+    {
+      "name": "Ginger",
+      "rarity": 55,
+      "aliases": [
+        "Adrak"
+      ]
+    },
+    {
+      "name": "Garlic",
+      "rarity": 58,
+      "aliases": [
+        "Lahsun"
+      ]
+    },
+    {
+      "name": "Onion",
+      "rarity": 62,
+      "aliases": [
+        "Pyaaz"
+      ]
+    },
+    {
+      "name": "Curry Powder",
+      "rarity": 65,
+      "aliases": []
+    },
+    {
+      "name": "Garam Masala",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "Chaat Masala",
+      "rarity": 72,
+      "aliases": []
+    },
+    {
+      "name": "Pav Bhaji Masala",
+      "rarity": 75,
+      "aliases": []
+    },
+    {
+      "name": "Chole Masala",
+      "rarity": 78,
+      "aliases": []
+    },
+    {
+      "name": "Biriyani Masala",
+      "rarity": 82,
+      "aliases": [
+        "Biryani Masala"
+      ]
+    },
+    {
+      "name": "Tandoori Masala",
+      "rarity": 85,
+      "aliases": []
+    },
+    {
+      "name": "Chat Masala",
+      "rarity": 88,
+      "aliases": []
+    },
+    {
+      "name": "Kitchen King Masala",
+      "rarity": 92,
+      "aliases": []
+    },
+    {
+      "name": "Sabji Masala",
+      "rarity": 95,
+      "aliases": []
+    }
+  ]
+}

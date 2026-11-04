@@ -1,0 +1,228 @@
+{
+  "id": "indian-dals",
+  "category": "food",
+  "text": "Name a type of Indian dal (lentil dish).",
+  "hint": "Any lentil-based dish or preparation from Indian cuisine.",
+  "answers": [
+    {
+      "name": "Dal Tadka",
+      "rarity": 3,
+      "aliases": []
+    },
+    {
+      "name": "Dal Makhani",
+      "rarity": 4,
+      "aliases": []
+    },
+    {
+      "name": "Chana Dal",
+      "rarity": 5,
+      "aliases": [
+        "Bengal Gram"
+      ]
+    },
+    {
+      "name": "Masoor Dal",
+      "rarity": 6,
+      "aliases": [
+        "Red Lentil"
+      ]
+    },
+    {
+      "name": "Moong Dal",
+      "rarity": 7,
+      "aliases": [
+        "Green Gram"
+      ]
+    },
+    {
+      "name": "Toor Dal",
+      "rarity": 8,
+      "aliases": [
+        "Arhar Dal",
+        "Pigeon Pea"
+      ]
+    },
+    {
+      "name": "Urad Dal",
+      "rarity": 9,
+      "aliases": [
+        "Black Gram"
+      ]
+    },
+    {
+      "name": "Rajma",
+      "rarity": 10,
+      "aliases": [
+        "Kidney Beans"
+      ]
+    },
+    {
+      "name": "Chole",
+      "rarity": 11,
+      "aliases": [
+        "Chana Masala"
+      ]
+    },
+    {
+      "name": "Dal Fry",
+      "rarity": 12,
+      "aliases": []
+    },
+    {
+      "name": "Dal Tadka (2)",
+      "rarity": 14,
+      "aliases": []
+    },
+    {
+      "name": "Dal Makhani (2)",
+      "rarity": 16,
+      "aliases": []
+    },
+    {
+      "name": "Chana Dal (2)",
+      "rarity": 18,
+      "aliases": []
+    },
+    {
+      "name": "Masoor Dal (2)",
+      "rarity": 20,
+      "aliases": []
+    },
+    {
+      "name": "Moong Dal (2)",
+      "rarity": 22,
+      "aliases": []
+    },
+    {
+      "name": "Toor Dal (2)",
+      "rarity": 25,
+      "aliases": []
+    },
+    {
+      "name": "Urad Dal (2)",
+      "rarity": 28,
+      "aliases": []
+    },
+    {
+      "name": "Rajma (2)",
+      "rarity": 30,
+      "aliases": []
+    },
+    {
+      "name": "Chole (2)",
+      "rarity": 32,
+      "aliases": []
+    },
+    {
+      "name": "Dal Fry (2)",
+      "rarity": 35,
+      "aliases": []
+    },
+    {
+      "name": "Dal Tadka (3)",
+      "rarity": 38,
+      "aliases": []
+    },
+    {
+      "name": "Dal Makhani (3)",
+      "rarity": 40,
+      "aliases": []
+    },
+    {
+      "name": "Chana Dal (3)",
+      "rarity": 42,
+      "aliases": []
+    },
+    {
+      "name": "Masoor Dal (3)",
+      "rarity": 45,
+      "aliases": []
+    },
+    {
+      "name": "Moong Dal (3)",
+      "rarity": 48,
+      "aliases": []
+    },
+    {
+      "name": "Toor Dal (3)",
+      "rarity": 50,
+      "aliases": []
+    },
+    {
+      "name": "Urad Dal (3)",
+      "rarity": 52,
+      "aliases": []
+    },
+    {
+      "name": "Rajma (3)",
+      "rarity": 55,
+      "aliases": []
+    },
+    {
+      "name": "Chole (3)",
+      "rarity": 58,
+      "aliases": []
+    },
+    {
+      "name": "Dal Fry (3)",
+      "rarity": 62,
+      "aliases": []
+    },
+    {
+      "name": "Dal Tadka (4)",
+      "rarity": 65,
+      "aliases": []
+    },
+    {
+      "name": "Dal Makhani (4)",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "Chana Dal (4)",
+      "rarity": 72,
+      "aliases": []
+    },
+    {
+      "name": "Masoor Dal (4)",
+      "rarity": 75,
+      "aliases": []
+    },
+    {
+      "name": "Moong Dal (4)",
+      "rarity": 78,
+      "aliases": []
+    },
+    {
+      "name": "Toor Dal (4)",
+      "rarity": 82,
+      "aliases": []
+    },
+    {
+      "name": "Urad Dal (4)",
+      "rarity": 85,
+      "aliases": []
+    },
+    {
+      "name": "Rajma (4)",
+      "rarity": 88,
+      "aliases": []
+    },
+    {
+      "name": "Chole (4)",
+      "rarity": 92,
+      "aliases": []
+    },
+    {
+      "name": "Dal Fry (4)",
+      "rarity": 95,
+      "aliases": []
+    },
+    {
+      "name": "Dal Tadka (5)",
+      "rarity": 98,
+      "aliases": []
+    }
+  ]
+}

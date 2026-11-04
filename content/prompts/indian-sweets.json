@@ -1,0 +1,244 @@
+{
+  "id": "indian-sweets",
+  "category": "food",
+  "text": "Name an Indian sweet or mithai.",
+  "hint": "A traditional Indian dessert or sweet dish.",
+  "answers": [
+    {
+      "name": "Gulab Jamun",
+      "rarity": 3,
+      "aliases": []
+    },
+    {
+      "name": "Rasgulla",
+      "rarity": 4,
+      "aliases": [
+        "Rosogolla"
+      ]
+    },
+    {
+      "name": "Jalebi",
+      "rarity": 5,
+      "aliases": []
+    },
+    {
+      "name": "Barfi",
+      "rarity": 6,
+      "aliases": [
+        "Burfi"
+      ]
+    },
+    {
+      "name": "Laddu",
+      "rarity": 7,
+      "aliases": [
+        "Ladoo"
+      ]
+    },
+    {
+      "name": "Kaju Katli",
+      "rarity": 8,
+      "aliases": [
+        "Kaju Katri"
+      ]
+    },
+    {
+      "name": "Rasmalai",
+      "rarity": 9,
+      "aliases": [
+        "Rossomalai"
+      ]
+    },
+    {
+      "name": "Halwa",
+      "rarity": 10,
+      "aliases": [
+        "Halva"
+      ]
+    },
+    {
+      "name": "Kheer",
+      "rarity": 11,
+      "aliases": [
+        "Payasam"
+      ]
+    },
+    {
+      "name": "Mysore Pak",
+      "rarity": 12,
+      "aliases": []
+    },
+    {
+      "name": "Peda",
+      "rarity": 14,
+      "aliases": [
+        "Pera"
+      ]
+    },
+    {
+      "name": "Sohan Halwa",
+      "rarity": 16,
+      "aliases": []
+    },
+    {
+      "name": "Gajar Halwa",
+      "rarity": 18,
+      "aliases": [
+        "Gajar Ka Halwa"
+      ]
+    },
+    {
+      "name": "Moong Dal Halwa",
+      "rarity": 20,
+      "aliases": []
+    },
+    {
+      "name": "Besan Laddu",
+      "rarity": 22,
+      "aliases": [
+        "Mohanthal"
+      ]
+    },
+    {
+      "name": "Rava Laddu",
+      "rarity": 25,
+      "aliases": [
+        "Sooji Laddu"
+      ]
+    },
+    {
+      "name": "Coconut Laddu",
+      "rarity": 28,
+      "aliases": [
+        "Nariyal Laddu"
+      ]
+    },
+    {
+      "name": "Malpua",
+      "rarity": 30,
+      "aliases": []
+    },
+    {
+      "name": "Imarti",
+      "rarity": 32,
+      "aliases": [
+        "Amriti"
+      ]
+    },
+    {
+      "name": "Balushahi",
+      "rarity": 35,
+      "aliases": [
+        "Badusha"
+      ]
+    },
+    {
+      "name": "Petha",
+      "rarity": 38,
+      "aliases": [
+        "Agra Petha"
+      ]
+    },
+    {
+      "name": "Kulfi",
+      "rarity": 40,
+      "aliases": []
+    },
+    {
+      "name": "Rabri",
+      "rarity": 42,
+      "aliases": [
+        "Rabdi"
+      ]
+    },
+    {
+      "name": "Sandesh",
+      "rarity": 45,
+      "aliases": []
+    },
+    {
+      "name": "Mishti Doi",
+      "rarity": 48,
+      "aliases": [
+        "Misti Doi"
+      ]
+    },
+    {
+      "name": "Chhena Poda",
+      "rarity": 50,
+      "aliases": []
+    },
+    {
+      "name": "Chamcham",
+      "rarity": 52,
+      "aliases": [
+        "Chomchom"
+      ]
+    },
+    {
+      "name": "Kaju Katli (2)",
+      "rarity": 55,
+      "aliases": []
+    },
+    {
+      "name": "Gulab Jamun (2)",
+      "rarity": 58,
+      "aliases": []
+    },
+    {
+      "name": "Rasgulla (2)",
+      "rarity": 62,
+      "aliases": []
+    },
+    {
+      "name": "Jalebi (2)",
+      "rarity": 65,
+      "aliases": []
+    },
+    {
+      "name": "Barfi (2)",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "Laddu (2)",
+      "rarity": 72,
+      "aliases": []
+    },
+    {
+      "name": "Rasmalai (2)",
+      "rarity": 75,
+      "aliases": []
+    },
+    {
+      "name": "Halwa (2)",
+      "rarity": 78,
+      "aliases": []
+    },
+    {
+      "name": "Kheer (2)",
+      "rarity": 82,
+      "aliases": []
+    },
+    {
+      "name": "Mysore Pak (2)",
+      "rarity": 85,
+      "aliases": []
+    },
+    {
+      "name": "Peda (2)",
+      "rarity": 88,
+      "aliases": []
+    },
+    {
+      "name": "Sohan Halwa (2)",
+      "rarity": 92,
+      "aliases": []
+    },
+    {
+      "name": "Malpua (2)",
+      "rarity": 95,
+      "aliases": []
+    }
+  ]
+}

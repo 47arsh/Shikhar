@@ -1,0 +1,246 @@
+{
+  "id": "indian-birds",
+  "category": "nature",
+  "text": "Name a bird found in India.",
+  "hint": "Any bird species native to or commonly found in India.",
+  "answers": [
+    {
+      "name": "Peacock",
+      "rarity": 4,
+      "aliases": [
+        "Indian Peafowl"
+      ]
+    },
+    {
+      "name": "Parrot",
+      "rarity": 5,
+      "aliases": [
+        "Rose-ringed Parakeet"
+      ]
+    },
+    {
+      "name": "Mynah",
+      "rarity": 6,
+      "aliases": [
+        "Common Myna"
+      ]
+    },
+    {
+      "name": "Crow",
+      "rarity": 7,
+      "aliases": [
+        "House Crow"
+      ]
+    },
+    {
+      "name": "Pigeon",
+      "rarity": 8,
+      "aliases": [
+        "Rock Pigeon"
+      ]
+    },
+    {
+      "name": "Bulbul",
+      "rarity": 9,
+      "aliases": [
+        "Red-vented Bulbul"
+      ]
+    },
+    {
+      "name": "Kingfisher",
+      "rarity": 10,
+      "aliases": [
+        "White-throated Kingfisher"
+      ]
+    },
+    {
+      "name": "Owl",
+      "rarity": 11,
+      "aliases": [
+        "Spotted Owlet"
+      ]
+    },
+    {
+      "name": "Eagle",
+      "rarity": 12,
+      "aliases": [
+        "Black Kite"
+      ]
+    },
+    {
+      "name": "Sparrow",
+      "rarity": 14,
+      "aliases": [
+        "House Sparrow"
+      ]
+    },
+    {
+      "name": "Koel",
+      "rarity": 15,
+      "aliases": [
+        "Asian Koel"
+      ]
+    },
+    {
+      "name": "Barbet",
+      "rarity": 16,
+      "aliases": [
+        "Coppersmith Barbet"
+      ]
+    },
+    {
+      "name": "Woodpecker",
+      "rarity": 18,
+      "aliases": [
+        "Greater Flameback"
+      ]
+    },
+    {
+      "name": "Sunbird",
+      "rarity": 20,
+      "aliases": [
+        "Purple Sunbird"
+      ]
+    },
+    {
+      "name": "Tailorbird",
+      "rarity": 22,
+      "aliases": [
+        "Common Tailorbird"
+      ]
+    },
+    {
+      "name": "Magpie Robin",
+      "rarity": 25,
+      "aliases": [
+        "Oriental Magpie Robin"
+      ]
+    },
+    {
+      "name": "Drongo",
+      "rarity": 28,
+      "aliases": [
+        "Black Drongo"
+      ]
+    },
+    {
+      "name": "Oriole",
+      "rarity": 30,
+      "aliases": [
+        "Black-naped Oriole"
+      ]
+    },
+    {
+      "name": "Minivet",
+      "rarity": 32,
+      "aliases": [
+        "Scarlet Minivet"
+      ]
+    },
+    {
+      "name": "Brahminy Kite",
+      "rarity": 35,
+      "aliases": []
+    },
+    {
+      "name": "Shikra",
+      "rarity": 38,
+      "aliases": []
+    },
+    {
+      "name": "Pied Kingfisher",
+      "rarity": 40,
+      "aliases": []
+    },
+    {
+      "name": "White-breasted Kingfisher",
+      "rarity": 42,
+      "aliases": []
+    },
+    {
+      "name": "Common Myna",
+      "rarity": 45,
+      "aliases": []
+    },
+    {
+      "name": "Jungle Myna",
+      "rarity": 48,
+      "aliases": []
+    },
+    {
+      "name": "Bank Myna",
+      "rarity": 50,
+      "aliases": []
+    },
+    {
+      "name": "House Sparrow",
+      "rarity": 52,
+      "aliases": []
+    },
+    {
+      "name": "Eurasian Collared Dove",
+      "rarity": 55,
+      "aliases": []
+    },
+    {
+      "name": "Spotted Dove",
+      "rarity": 58,
+      "aliases": []
+    },
+    {
+      "name": "Laughing Dove",
+      "rarity": 62,
+      "aliases": []
+    },
+    {
+      "name": "Red Collared Dove",
+      "rarity": 65,
+      "aliases": []
+    },
+    {
+      "name": "Emerald Dove",
+      "rarity": 68,
+      "aliases": []
+    },
+    {
+      "name": "Green Pigeon",
+      "rarity": 72,
+      "aliases": []
+    },
+    {
+      "name": "Imperial Pigeon",
+      "rarity": 75,
+      "aliases": []
+    },
+    {
+      "name": "Nicobar Pigeon",
+      "rarity": 78,
+      "aliases": []
+    },
+    {
+      "name": "Andaman Woodpecker",
+      "rarity": 82,
+      "aliases": []
+    },
+    {
+      "name": "Great Hornbill",
+      "rarity": 85,
+      "aliases": []
+    },
+    {
+      "name": "Oriental Pied Hornbill",
+      "rarity": 88,
+      "aliases": []
+    },
+    {
+      "name": "Malabar Pied Hornbill",
+      "rarity": 92,
+      "aliases": []
+    },
+    {
+      "name": "Great Indian Hornbill",
+      "rarity": 95,
+      "aliases": []
+    }
+  ]
+}
