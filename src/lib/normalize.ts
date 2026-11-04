@@ -1,5 +1,3 @@
-import { normalize as unicornNormalize } from "url";
-
 export function normalizeInput(input: string): string {
   return input
     .toLowerCase()
