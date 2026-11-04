@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Prompt {
+  id        String   @id @default(cuid())
+  category  String
+  text      String
+  hint      String?
+  active    Boolean  @default(true)
+  dateKey   String?  // for daily climbs: IST date
+  answers   Answer[]
+  climbs    ClimbRound[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+  @@index([active])
+  @@index([dateKey])
+}
+
+model Answer {
+  id            String     @id @default(cuid())
+  promptId      String
+  prompt        Prompt     @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  canonicalName String
+  seededRarity  Int?       // 1 to 100, nullable
+  aliases       Json       // string[]
+  plays         Int        @default(0)
+  createdAt     DateTime   @default(now())
+
+  @@index([promptId])
+  @@unique([promptId, canonicalName])
+}
+
+model Climb {
+  id          String   @id @default(cuid())
+  anonId      String
+  mode        String   // "daily" | "free"
+  dateKey     String?  // IST date for daily
+  totalPoints Int      @default(0)
+  outcome     String   // "summited" | "turned_back" | "in_progress"
+  startedAt   DateTime @default(now())
+  completedAt DateTime?
+  rounds      ClimbRound[]
+
+  @@index([anonId])
+  @@index([mode])
+  @@index([dateKey])
+  @@index([anonId, dateKey])
+}
+
+model ClimbRound {
+  id          String   @id @default(cuid())
+  climbId     String
+  climb       Climb    @relation(fields: [climbId], references: [id], onDelete: Cascade)
+  round       Int      // 1..10
+  promptId    String
+  prompt      Prompt   @relation(fields: [promptId], references: [id])
+  input       String?
+  canonicalId String?  // matched answer id
+  points      Int      @default(0)
+  tier        String?
+  skipped     Boolean  @default(false)
+  attempts    Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  @@index([climbId])
+  @@unique([climbId, round])
+}
+
+model UnmatchedSubmission {
+  id             String     @id @default(cuid())
+  promptId       String
+  prompt         Prompt     @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  normalizedInput String
+  count          Int        @default(1)
+  firstSeen      DateTime   @default(now())
+  lastSeen       DateTime   @default(now())
+  reviewed       Boolean    @default(false)
+  reviewNote     String?
+
+  @@index([promptId])
+  @@index([promptId, normalizedInput])
+  @@index([reviewed])
+  @@unique([promptId, normalizedInput], { name: "UnmatchedSubmission_promptId_normalizedInput_key" })
+}
+
+model PlayCount {
+  id        String @id @default(cuid())
+  anonId    String
+  promptId  String
+  count     Int    @default(1)
+  updatedAt DateTime @updatedAt
+
+  @@index([anonId])
+  @@index([promptId])
+  @@unique([anonId, promptId])
+}
