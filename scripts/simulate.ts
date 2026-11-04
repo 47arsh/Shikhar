@@ -17,7 +17,6 @@ interface PlayerKnowledge {
 const playerTypes: PlayerKnowledge[] = [
   {
     name: "casual",
-    // Knows mostly common answers; rare answers are unlikely
     knowProbability: (r: number) => Math.max(0, 1 - r / 60) * 0.5,
   },
   {
@@ -29,6 +28,11 @@ const playerTypes: PlayerKnowledge[] = [
     knowProbability: (r: number) => Math.max(0, 1 - r / 140) * 0.95,
   },
 ];
+
+// Chance per round that a player submits a non-seeded (novel) answer
+const NOVEL_SUBMISSION_CHANCE = 0.15;
+// Probability a novel answer is judged valid (experts higher)
+const JUDGE_VALID_PROB = { casual: 0.25, average: 0.45, expert: 0.65 };
 
 function loadPrompts(): Prompt[] {
   const files = readdirSync(promptsDir).filter((f) => f.endsWith(".json"));
@@ -61,19 +65,41 @@ function selectPrompts(prompts: Prompt[], seed: number) {
   return chosen.sort((a, b) => a.round - b.round);
 }
 
+// Track judged answers added per prompt across all simulated climbs
+const judgedAnswersByPrompt = new Map<string, Array<{ rarity: number; plays: number }>>();
+
+function getAllAnswers(prompt: Prompt) {
+  const seeded = prompt.answers.map((a) => ({ rarity: a.rarity, plays: 0 }));
+  const judged = judgedAnswersByPrompt.get(prompt.id) ?? [];
+  return [...seeded, ...judged];
+}
+
 function playerAnswer(
   prompt: Prompt,
   player: PlayerKnowledge,
   rng: () => number
 ): { rarity: number } | null {
-  // Player picks the rarest answer they know
-  const answers = [...prompt.answers].sort((a, b) => b.rarity - a.rarity);
-  for (const ans of answers) {
+  const allAnswers = getAllAnswers(prompt).sort((a, b) => b.rarity - a.rarity);
+  for (const ans of allAnswers) {
     if (rng() < player.knowProbability(ans.rarity)) {
       return { rarity: ans.rarity };
     }
   }
-  return null; // knows nothing, unmatched
+
+  // Player knows no answer; may submit a novel answer
+  if (rng() < NOVEL_SUBMISSION_CHANCE) {
+    const judgeOk = rng() < JUDGE_VALID_PROB[player.name as keyof typeof JUDGE_VALID_PROB];
+    if (judgeOk) {
+      // Novel answer judged valid, added to pool with neutral prior rarity
+      const existing = judgedAnswersByPrompt.get(prompt.id) ?? [];
+      existing.push({ rarity: GAME.neutralPriorRarity, plays: 0 });
+      judgedAnswersByPrompt.set(prompt.id, existing);
+      return { rarity: GAME.neutralPriorRarity };
+    }
+    return null; // novel answer judged invalid
+  }
+
+  return null; // unmatched
 }
 
 function simulateClimb(
@@ -89,9 +115,11 @@ function simulateClimb(
   for (const p of climbPrompts) {
     const ans = playerAnswer(p, player, rng);
     if (!ans) continue; // unmatched, no points
-    // top' = max(K * r0) across all answers in this prompt (plays = 0 initially)
+
+    const allAnswers = getAllAnswers(p);
+    // top' = max(K * r0) across all answers in this prompt (plays = 0 initially for scoring)
     const topAdjusted = Math.max(
-      ...p.answers.map((a) => GAME.priorWeightK * Math.pow(1 - a.rarity / 100, 2))
+      ...allAnswers.map((a) => GAME.priorWeightK * Math.pow(1 - a.rarity / 100, 2))
     );
     const score = computePoints(ans.rarity, 0, topAdjusted, GAME.priorWeightK);
     totalPoints += score.points;
@@ -106,6 +134,8 @@ function runSimulation(
   climbsPerPlayer: number,
   prompts: Prompt[]
 ) {
+  judgedAnswersByPrompt.clear();
+
   const results = new Map<
     string,
     { summited: number; total: number; points: number[] }
@@ -171,7 +201,6 @@ function main() {
         .padStart(8)} | ${expertRate.toFixed(2).padStart(8)}`
     );
 
-    // Score: how far from targets (casual 0.5%, average 5.5%, expert 32.5%)
     const casualTarget = 0.5;
     const averageTarget = 5.5;
     const expertTarget = 32.5;
@@ -193,6 +222,10 @@ function main() {
 
   // Detailed distribution at the tuned value
   const res = runSimulation(best!.pointsToSummit, climbsPerPlayer, prompts);
+  let totalJudged = 0;
+  for (const [pid, ans] of judgedAnswersByPrompt) totalJudged += ans.length;
+  console.log(`\nTotal judged answers added to pools: ${totalJudged}`);
+
   for (const p of playerTypes) {
     const agg = res.get(p.name)!;
     const sorted = agg.points.slice().sort((a, b) => a - b);
