@@ -37,6 +37,7 @@ model Answer {
   popularitySignal Float?   // sitelink count or similar popularity measure
   aliases       Json       // string[]
   plays         Int        @default(0)
+  cachedRarity  Int?       // cached computed rarity (1-100), recomputed periodically
   createdAt     DateTime   @default(now())
 
   @@index([promptId])
