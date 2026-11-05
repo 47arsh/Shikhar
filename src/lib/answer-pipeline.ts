@@ -254,7 +254,13 @@ export class AnswerPipeline {
     }
 
     // 4. Layer 2b: candidate lookup
-    const candidates = await this.entityLookup.lookup(value);
+    let candidates: EntityCandidate[] = [];
+    try {
+      candidates = await this.entityLookup.lookup(value);
+    } catch {
+      // Entity lookup (e.g., Wikidata) is down — proceed without candidates
+      candidates = [];
+    }
 
     // 5. Layer 2c: judge (with cap and timeout)
     const capKey = `judge:daily:${new Date().toISOString().slice(0, 10)}`;
@@ -387,4 +393,3 @@ export async function createPipeline(): Promise<AnswerPipeline> {
   const store: KeyValueStore = await kv;
   return new AnswerPipeline(db, judge, entityLookup, store);
 }
-

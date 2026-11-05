@@ -19,6 +19,7 @@ export interface ClimbState {
   result: AnswerResponse | null;
   streak: number;
   outcome: string | null;
+  error: string | null;
 }
 
 export interface GameContextType extends ClimbState {
@@ -26,6 +27,7 @@ export interface GameContextType extends ClimbState {
   submitCurrentAnswer: () => Promise<void>;
   skipCurrentRound: () => Promise<void>;
   setAnswer: (value: string) => void;
+  setError: (error: string | null) => void;
   nextRound: () => void;
   viewResult: (climbId: string) => Promise<void>;
   resetGame: () => void;
@@ -73,6 +75,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     result: null,
     streak: getStoredStreak(),
     outcome: null,
+    error: null,
   });
 
   const anonId = getAnonId();
@@ -88,6 +91,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       answer: "",
       checking: false,
       result: null,
+      error: null,
     }));
 
     try {
@@ -98,7 +102,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         prompts: data.prompts,
       }));
     } catch (err) {
-      setState((s) => ({ ...s, status: "idle" }));
+      setState((s) => ({
+        ...s,
+        status: "idle",
+        error: err instanceof Error ? err.message : "Failed to start climb",
+      }));
       throw err;
     }
   }, [anonId]);
@@ -107,7 +115,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     if (!state.climbId || state.checking) return;
     if (!state.answer.trim()) return;
 
-    setState((s) => ({ ...s, checking: true }));
+    setState((s) => ({ ...s, checking: true, error: null }));
 
     try {
       const data: AnswerResponse = await submitAnswer(
@@ -134,13 +142,18 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         setState((s) => ({ ...s, totalPoints: data.totalPoints ?? s.totalPoints }));
       }
     } catch {
-      setState((s) => ({ ...s, checking: false, status: "playing" }));
+      setState((s) => ({
+        ...s,
+        checking: false,
+        status: "playing",
+        error: "Failed to submit answer. Please try again.",
+      }));
     }
   }, [state.climbId, state.currentRound, state.answer, state.checking]);
 
   const skipCurrentRound = useCallback(async () => {
     if (!state.climbId || state.checking) return;
-    setState((s) => ({ ...s, checking: true }));
+    setState((s) => ({ ...s, checking: true, error: null }));
 
     try {
       const data: SkipResponse = await skipRound(state.climbId, state.currentRound);
@@ -153,12 +166,20 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         setState((s) => ({ ...s, status: "finished", totalPoints: s.totalPoints }));
       }
     } catch {
-      setState((s) => ({ ...s, checking: false }));
+      setState((s) => ({
+        ...s,
+        checking: false,
+        error: "Failed to skip round. Please try again.",
+      }));
     }
   }, [state.climbId, state.currentRound, state.checking]);
 
   const setAnswer = useCallback((value: string) => {
     setState((s) => ({ ...s, answer: value }));
+  }, []);
+
+  const setError = useCallback((error: string | null) => {
+    setState((s) => ({ ...s, error }));
   }, []);
 
   const nextRound = useCallback(() => {
@@ -200,6 +221,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       result: null,
       streak: state.streak,
       outcome: null,
+      error: null,
     });
   }, [state.streak]);
 
@@ -209,6 +231,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     submitCurrentAnswer,
     skipCurrentRound,
     setAnswer,
+    setError,
     nextRound,
     viewResult,
     resetGame,

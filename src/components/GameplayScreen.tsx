@@ -24,6 +24,8 @@ export function GameplayScreen({ mode }: GameplayScreenProps) {
     submitCurrentAnswer,
     skipCurrentRound,
     startNewClimb,
+    error,
+    setError,
   } = useGame();
 
   useEffect(() => {
@@ -60,16 +62,24 @@ export function GameplayScreen({ mode }: GameplayScreenProps) {
   }
 
   const handleSubmit = useCallback(() => {
+    setError(null);
     submitCurrentAnswer();
-  }, [submitCurrentAnswer]);
+  }, [submitCurrentAnswer, setError]);
 
   const handleSkip = useCallback(() => {
+    setError(null);
     skipCurrentRound();
-  }, [skipCurrentRound]);
+  }, [skipCurrentRound, setError]);
 
   const handleAnswerChange = useCallback((value: string) => {
     setAnswer(value);
-  }, [setAnswer]);
+    setError(null);
+  }, [setAnswer, setError]);
+
+  const handleRetry = useCallback(() => {
+    setError(null);
+    submitCurrentAnswer();
+  }, [submitCurrentAnswer, setError]);
 
   const progress = (currentRound / GAME.roundsPerClimb) * 100;
 
@@ -125,6 +135,22 @@ export function GameplayScreen({ mode }: GameplayScreenProps) {
             <p className="text-sm text-slate-600 italic">{currentPrompt.hint}</p>
           )}
         </div>
+
+        {/* Error display */}
+        {error && (
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+            <div className="flex items-start gap-2">
+              <span className="text-red-600">⚠️</span>
+              <p className="text-sm text-red-700">{error}</p>
+            </div>
+            <button
+              onClick={handleRetry}
+              className="mt-2 px-3 py-1 rounded text-xs font-medium text-red-600 bg-red-100 hover:bg-red-200 transition-all"
+            >
+              Try again
+            </button>
+          </div>
+        )}
 
         {/* Answer input */}
         <AnswerInput
