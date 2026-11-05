@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useCallback, useState } from "react";
+import { createContext, useContext, useCallback, useState, useEffect } from "react";
 import { startClimb, submitAnswer, skipRound, getResult } from "@/lib/api";
 import { GAME } from "@/config/game";
 import type { StartResponse, AnswerResponse, SkipResponse, ResultResponse, PromptPick } from "@/lib/api";
@@ -20,6 +20,7 @@ export interface ClimbState {
   streak: number;
   outcome: string | null;
   error: string | null;
+  isOnline: boolean;
 }
 
 export interface GameContextType extends ClimbState {
@@ -76,9 +77,24 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     streak: getStoredStreak(),
     outcome: null,
     error: null,
+    isOnline: typeof navigator !== "undefined" && navigator.onLine,
   });
 
   const anonId = getAnonId();
+
+  // Track online/offline status
+  useEffect(() => {
+    const handleOnline = () => setState((s) => ({ ...s, isOnline: true }));
+    const handleOffline = () => setState((s) => ({ ...s, isOnline: false }));
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
 
   const startNewClimb = useCallback(async (mode: "daily" | "free") => {
     setState((s) => ({
@@ -222,6 +238,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       streak: state.streak,
       outcome: null,
       error: null,
+      isOnline: typeof navigator !== "undefined" && navigator.onLine,
     });
   }, [state.streak]);
 
