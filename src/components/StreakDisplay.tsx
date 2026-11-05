@@ -1,3 +1,5 @@
+"use client";
+
 import { useGame } from "@/context/GameContext";
 
 export function StreakDisplay() {

@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { GAME } from "@/config/game";
 

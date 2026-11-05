@@ -1,3 +1,5 @@
+"use client";
+
 import { GAME } from "@/config/game";
 import { useGame } from "@/context/GameContext";
 

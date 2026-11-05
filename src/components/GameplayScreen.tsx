@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useEffect } from "react";
 import { GAME } from "@/config/game";
 import { useGame } from "@/context/GameContext";
