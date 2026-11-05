@@ -22,7 +22,6 @@ function getCategories(): string[] {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const prompts = getPrompts();
   const categories = getCategories();
   const now = new Date();
 

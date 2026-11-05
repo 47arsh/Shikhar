@@ -22,14 +22,18 @@ interface MetricResult {
   navigationType: string;
 }
 
-let onMetricCallback: ((result: MetricResult) => void) | null = null;
+interface MetricResultWithBudget extends MetricResult {
+  overBudget?: boolean;
+}
 
-export function onPerformanceMetric(callback: (result: MetricResult) => void): void {
+let onMetricCallback: ((result: MetricResultWithBudget) => void) | null = null;
+
+export function onPerformanceMetric(callback: (result: MetricResultWithBudget) => void): void {
   onMetricCallback = callback;
 }
 
 function reportMetric(metric: MetricResult): void {
-  const budget = PERFORMANCE_BUDGET as Record<string, number>;
+  const budget = PERFORMANCE_BUDGET as unknown as Record<string, number | undefined>;
   const budgetValue = budget[metric.name.toLowerCase()];
   const overBudget = budgetValue != null && metric.value > budgetValue;
 
@@ -38,7 +42,6 @@ function reportMetric(metric: MetricResult): void {
   }
 
   if (process.env.NODE_ENV === "development") {
-    // eslint-disable-next-line no-console
     console.log(
       `[Performance] ${metric.name}: ${metric.value.toFixed(2)}${
         overBudget ? " (OVER BUDGET: " + budgetValue + "ms)" : ""
@@ -52,9 +55,11 @@ export function initPerformanceMonitoring(): void {
 
   // Measure TTFB
   if ("performance" in window) {
-    const navigation = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
+    const navigation = performance.getEntriesByType("navigation");
     if (navigation.length > 0) {
-      const nav = navigation[0];
+      const nav = navigation[0] as PerformanceNavigationTiming & {
+        navigationType: string;
+      };
       reportMetric({
         name: "ttfb",
         value: nav.responseStart - nav.requestStart,
@@ -69,8 +74,4 @@ export function initPerformanceMonitoring(): void {
   // For now, we provide the hook for integration.
 }
 
-export function checkPerformanceBudget(): boolean {
-  let withinBudget = true;
-  // This would be called after metrics are collected
-  return withinBudget;
-}
+export const checkPerformanceBudget = (): boolean => true;

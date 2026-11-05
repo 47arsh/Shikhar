@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   };
 }
 
-export default function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params;
   const categoryName = category.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
   const prompts = getPromptsByCategory(category);

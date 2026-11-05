@@ -12,7 +12,6 @@ export function initAnalytics(): void {
   // In production, this would initialize Google Analytics, Plausible, etc.
   // For now, we log to console in development.
   if (process.env.NODE_ENV === "development") {
-    // eslint-disable-next-line no-console
     console.log("[Analytics] Initialized");
   }
 }
@@ -21,7 +20,6 @@ export function track(event: AnalyticsEvent): void {
   if (typeof window === "undefined") return;
 
   if (process.env.NODE_ENV === "development") {
-    // eslint-disable-next-line no-console
     console.log("[Analytics]", event.name, event.properties);
   }
 

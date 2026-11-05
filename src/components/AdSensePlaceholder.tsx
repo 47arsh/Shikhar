@@ -2,6 +2,12 @@
 
 import { useEffect, useState } from "react";
 
+interface WindowWithAds extends Window {
+  adsbygoogle?: { loaded?: boolean };
+}
+
+const win = window as unknown as WindowWithAds;
+
 interface AdSensePlaceholderProps {
   width?: string;
   height?: string;
@@ -17,11 +23,11 @@ export function AdSensePlaceholder({
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (!(window as any).adsbygoogle) return;
+    if (!win.adsbygoogle) return;
 
     // Mark as loaded once the AdSense script initializes
     const interval = setInterval(() => {
-      if ((window as any).adsbygoogle?.loaded) {
+      if (win.adsbygoogle?.loaded) {
         setLoaded(true);
         clearInterval(interval);
       }
