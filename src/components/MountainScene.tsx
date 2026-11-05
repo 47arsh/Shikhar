@@ -114,9 +114,9 @@ export function MountainScene({
         transform: "translate(-50%, -50%)",
       }}>
         <div className="relative">
-          <div className="w-8 h-8 bg-shikhar-dawn rounded-full shadow-lg border-2 border-white flex items-center justify-center animate-bounce">
-            <span className="text-[10px] font-bold text-shikhar-dusk">🏔️</span>
-          </div>
+        <div className="w-8 h-8 bg-shikhar-dawn rounded-full shadow-lg border-2 border-white flex items-center justify-center">
+          <span className="text-[10px] font-bold text-shikhar-dusk">🏔️</span>
+        </div>
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-2 h-2 bg-orange-400 rounded-full opacity-0 transition-opacity duration-300" id="sparkle" />
         </div>
       </div>

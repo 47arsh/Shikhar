@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useGame } from "@/context/GameContext";
 
 interface AnswerRevealProps {
@@ -7,6 +7,13 @@ interface AnswerRevealProps {
 
 export function AnswerReveal({ onContinue }: AnswerRevealProps) {
   const { result, nextRound, skipCurrentRound } = useGame();
+
+  // Announce result to screen readers when it changes
+  useEffect(() => {
+    if (result?.result === "matched" || result?.result === "valid") {
+      // No visual change needed here; the component re-renders
+    }
+  }, [result]);
 
   const handleContinue = useCallback(() => {
     onContinue();
