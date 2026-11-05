@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext, useCallback, useState } from "react";
 import { startClimb, submitAnswer, skipRound, getResult } from "@/lib/api";
 import { GAME } from "@/config/game";
