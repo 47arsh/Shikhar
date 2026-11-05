@@ -9,6 +9,7 @@ import { ShareText } from "@/components/ShareText";
 import type { GameContextType } from "@/context/GameContext";
 
 export default async function PlayPage({ params }: { params: Promise<{ mode: string }> }) {
+  void params;
   const game = useGame() as GameContextType;
   const { status, result, totalPoints, outcome, prompts } = game;
   const [showResult, setShowResult] = useState(false);
