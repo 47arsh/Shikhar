@@ -1,0 +1,27 @@
+export const runtime = "edge";
+
+export async function GET() {
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1E3A8A"/>
+          <stop offset="100%" stop-color="#0F172A"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="630" fill="url(#bg)"/>
+      <path d="M0,500 L200,300 L400,450 L600,250 L800,400 L1000,350 L1200,500 L1200,630 L0,630 Z" fill="#1E293B"/>
+      <path d="M100,500 L300,200 L500,350 L700,150 L900,300 L1100,200 L1200,500 Z" fill="#FDE68A" opacity="0.9"/>
+      <text x="600" y="280" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Shikhar</text>
+      <text x="600" y="360" font-family="Arial, sans-serif" font-size="32" fill="#FDE68A" text-anchor="middle">Indian Rarity-Trivia Climbing Game</text>
+      <text x="600" y="520" font-family="Arial, sans-serif" font-size="24" fill="#94A3B8" text-anchor="middle">Climb Kanchenjunga with rare answers</text>
+    </svg>
+  `;
+
+  return new Response(svg, {
+    headers: {
+      "Content-Type": "image/svg+xml",
+      "Cache-Control": "public, max-age=31536000, immutable",
+    },
+  });
+}
