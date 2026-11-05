@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import { GAME } from "@/config/game";
 
 const SUMMIT_ALTITUDE = GAME.summitAltitudeM;
-const BASE_ALTITUDE = GAME.baseAltitudeM;
 
 interface MountainSceneProps {
   altitude: number;
-  totalPoints: number;
   roundsCompleted: number;
   className?: string;
 }
@@ -18,13 +16,6 @@ const CAMPS = [
   { name: "Summit", altitude: 8586, labelY: -10 },
 ];
 
-function getZoneColor(altitude: number): string {
-  if (altitude < 3000) return "bg-shikhar-dawn";
-  if (altitude < 5000) return "bg-shikhar-day";
-  if (altitude < 7000) return "bg-slate-700";
-  return "bg-shikhar-night";
-}
-
 function getZoneLabel(altitude: number): string {
   if (altitude < 3000) return "Valley";
   if (altitude < 5000) return "Alpine";
@@ -34,7 +25,6 @@ function getZoneLabel(altitude: number): string {
 
 export function MountainScene({
   altitude,
-  totalPoints,
   roundsCompleted,
   className,
 }: MountainSceneProps) {
@@ -47,7 +37,6 @@ export function MountainScene({
   }, [progress]);
 
   const climberY = Math.max(0, 100 - progress * 90);
-  const trailOffset = progress * 200;
 
   return (
     <section className={`relative min-h-screen w-full overflow-hidden ${className ?? ""}`}>

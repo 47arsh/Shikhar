@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import { GAME } from "@/config/game";
 import { useGame } from "@/context/GameContext";
 
@@ -22,7 +21,7 @@ function getPointsEmoji(points: number): string {
 }
 
 export function ClimbResultScreen({ onRestart }: ClimbResultScreenProps) {
-  const { totalPoints, outcome, streak, setAnswer } = useGame();
+  const { totalPoints, outcome, streak } = useGame();
 
   const summited = outcome === "summited";
   const altitude = Math.min(
@@ -31,16 +30,17 @@ export function ClimbResultScreen({ onRestart }: ClimbResultScreenProps) {
     GAME.summitAltitudeM,
   );
 
-  const handleShare = useCallback(() => {
+  const handleShare = () => {
     const shareText = buildShareText();
-    if (typeof navigator !== "undefined" && (navigator as any).share) {
-      (navigator as any).share({ title: "Shikhar Climb", text: shareText });
-    } else {
-      if (typeof window !== "undefined") {
-        window.navigator.clipboard.writeText(shareText);
-      }
+    if (typeof navigator !== "undefined" && "share" in navigator) {
+      void (navigator as { share?: (data: { title: string; text: string }) => Promise<void> }).share?.({
+        title: "Shikhar Climb",
+        text: shareText,
+      });
+    } else if (typeof window !== "undefined" && window.navigator.clipboard) {
+      void window.navigator.clipboard.writeText(shareText);
     }
-  }, [totalPoints, outcome, streak]);
+  };
 
   const buildShareText = (): string => {
     const tierEmoji = getTierEmoji(totalPoints);
@@ -83,7 +83,7 @@ export function ClimbResultScreen({ onRestart }: ClimbResultScreenProps) {
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-shikhar-dusk">{Math.round(altitude)}m</div>
-            <div class="text-xs text-slate-500">Altitude</div>
+            <div className="text-xs text-slate-500">Altitude</div>
           </div>
         </div>
 

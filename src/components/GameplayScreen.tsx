@@ -4,16 +4,8 @@ import { useGame } from "@/context/GameContext";
 import { MountainScene } from "@/components/MountainScene";
 import { AnswerInput } from "@/components/AnswerInput";
 
-const TIER_LABELS: Record<string, string> = {
-  "Everyone's answer": "Common",
-  "Fairly common": "Fairly common",
-  Uncommon: "Uncommon",
-  "Rare find": "Rare",
-};
-
 export function GameplayScreen() {
   const {
-    climbId,
     prompts,
     currentRound,
     totalPoints,
@@ -22,11 +14,10 @@ export function GameplayScreen() {
     checking,
     result,
     streak,
+    dailyLocked,
     setAnswer,
     submitCurrentAnswer,
     skipCurrentRound,
-    nextRound,
-    dailyLocked,
   } = useGame();
 
   const currentPrompt = prompts[currentRound - 1];
@@ -39,19 +30,15 @@ export function GameplayScreen() {
     skipCurrentRound();
   }, [skipCurrentRound]);
 
-  const handleAnswerChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setAnswer(e.target.value);
-    },
-    [setAnswer],
-  );
+  const handleAnswerChange = useCallback((value: string) => {
+    setAnswer(value);
+  }, [setAnswer]);
 
   if (status === "idle") {
     return <div className="min-h-screen flex items-center justify-center p-4" />;
   }
 
   const progress = (currentRound / GAME.roundsPerClimb) * 100;
-  const attemptsLeft = result?.attemptsLeft ?? GAME.maxAttemptsPerRound;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -83,7 +70,6 @@ export function GameplayScreen() {
         {/* Mountain scene */}
         <MountainScene
           altitude={0}
-          totalPoints={totalPoints}
           roundsCompleted={currentRound - 1}
           className="h-64 mb-6"
         />
