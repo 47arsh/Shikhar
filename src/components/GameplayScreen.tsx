@@ -1,10 +1,14 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { GAME } from "@/config/game";
 import { useGame } from "@/context/GameContext";
 import { MountainScene } from "@/components/MountainScene";
 import { AnswerInput } from "@/components/AnswerInput";
 
-export function GameplayScreen() {
+interface GameplayScreenProps {
+  mode?: "daily" | "free";
+}
+
+export function GameplayScreen({ mode }: GameplayScreenProps) {
   const {
     prompts,
     currentRound,
@@ -18,7 +22,14 @@ export function GameplayScreen() {
     setAnswer,
     submitCurrentAnswer,
     skipCurrentRound,
+    startNewClimb,
   } = useGame();
+
+  useEffect(() => {
+    if (status === "idle" && mode) {
+      startNewClimb(mode);
+    }
+  }, [status, mode, startNewClimb]);
 
   const currentPrompt = prompts[currentRound - 1];
 
