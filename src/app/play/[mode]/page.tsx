@@ -1,31 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useGame } from "@/context/GameContext";
 import { GameplayScreen } from "@/components/GameplayScreen";
 import { AnswerReveal } from "@/components/AnswerReveal";
 import { ClimbResultScreen } from "@/components/ClimbResultScreen";
 import { ShareText } from "@/components/ShareText";
-import { GAME } from "@/config/game";
+import type { GameContextType } from "@/context/GameContext";
 
 export default function PlayPage({ params }: { params: { mode: string } }) {
-  const { mode, status, result, totalPoints, outcome, prompts, currentRound, streak } =
-    useGame() as any;
+  void params;
+  const game = useGame() as GameContextType;
+  const { status, result, totalPoints, outcome, prompts } = game;
   const [showResult, setShowResult] = useState(false);
   const [showShare, setShowShare] = useState(false);
 
-  // Extract rounds for share text
-  const rounds = (prompts as any[]).map((p, i) => ({
-    points: (result as any)?.points ?? null,
-    tier: (result as any)?.tier ?? null,
+  const rounds = (prompts ?? []).map(() => ({
+    points: result?.points ?? null,
+    tier: result?.tier ?? null,
     skipped: false,
   }));
-
-  useEffect(() => {
-    if (status === "finished") {
-      setShowResult(true);
-    }
-  }, [status]);
 
   if (status === "idle") {
     return (
@@ -52,11 +46,7 @@ export default function PlayPage({ params }: { params: { mode: string } }) {
             </button>
           </div>
           {showShare && (
-            <ShareText
-              totalPoints={totalPoints}
-              rounds={rounds}
-              outcome={outcome}
-            />
+            <ShareText totalPoints={totalPoints} rounds={rounds} outcome={outcome ?? ""} />
           )}
         </div>
       </div>

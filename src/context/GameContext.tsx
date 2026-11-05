@@ -1,7 +1,7 @@
-import { createContext, useContext, useCallback, useEffect, useState } from "react";
+import { createContext, useContext, useCallback, useState } from "react";
 import { startClimb, submitAnswer, skipRound, getResult } from "@/lib/api";
 import { GAME } from "@/config/game";
-import type { StartResponse, AnswerResponse, SkipResponse, PromptPick } from "@/lib/api";
+import type { StartResponse, AnswerResponse, SkipResponse, ResultResponse, PromptPick } from "@/lib/api";
 
 export type GameStatus = "idle" | "playing" | "revealing" | "finished";
 
@@ -17,9 +17,10 @@ export interface ClimbState {
   result: AnswerResponse | null;
   streak: number;
   dailyLocked: boolean;
+  outcome: string | null;
 }
 
-interface GameContextType extends ClimbState {
+export interface GameContextType extends ClimbState {
   startNewClimb: (mode: "daily" | "free") => Promise<void>;
   submitCurrentAnswer: () => Promise<void>;
   skipCurrentRound: () => Promise<void>;
@@ -90,6 +91,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     result: null,
     streak: getStoredStreak(),
     dailyLocked: getDailyLocked(),
+    outcome: null,
   });
 
   const anonId = getAnonId();
@@ -110,7 +112,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     }));
 
     try {
-      const data: StartResponse = await startClimb(mode, anonId);
+      const data: StartResponse = await startClimb(mode);
       setState((s) => ({
         ...s,
         climbId: data.climbId,
@@ -146,13 +148,14 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       if (data.outcome === "summited" || data.outcome === "turned_back") {
         setState((s) => ({ ...s, status: "finished", totalPoints: data.totalPoints ?? s.totalPoints }));
         if (data.outcome === "summited") {
-          setState((s) => ({ ...s, streak: s.streak + 1 }));
-          setStoredStreak(s.streak + 1);
+          const newStreak = state.streak + 1;
+          setState((s) => ({ ...s, streak: newStreak }));
+          setStoredStreak(newStreak);
         }
       } else if (data.result === "matched" || data.result === "valid") {
         setState((s) => ({ ...s, totalPoints: data.totalPoints ?? s.totalPoints }));
       }
-    } catch (err) {
+    } catch {
       setState((s) => ({ ...s, checking: false, status: "playing" }));
     }
   }, [state.climbId, state.currentRound, state.answer, state.checking]);
@@ -171,7 +174,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       if (data.outcome) {
         setState((s) => ({ ...s, status: "finished", totalPoints: s.totalPoints }));
       }
-    } catch (err) {
+    } catch {
       setState((s) => ({ ...s, checking: false }));
     }
   }, [state.climbId, state.currentRound, state.checking]);
@@ -193,7 +196,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const viewResult = useCallback(async (climbId: string) => {
     try {
-      const data: SkipResponse & { totalPoints: number; outcome: string; rounds: any[] } = await getResult(climbId);
+      const data: ResultResponse = await getResult(climbId);
       setState((s) => ({
         ...s,
         climbId,
@@ -219,6 +222,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       result: null,
       streak: state.streak,
       dailyLocked: state.dailyLocked,
+      outcome: null,
     });
   }, [state.streak, state.dailyLocked]);
 

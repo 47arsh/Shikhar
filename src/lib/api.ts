@@ -52,8 +52,6 @@ export interface ResultResponse {
   rounds: RoundResult[];
 }
 
-const API_BASE = "";
-
 async function request<T>(path: string, body?: unknown): Promise<T> {
   const res = await fetch(path, {
     method: "POST",
@@ -67,7 +65,7 @@ async function request<T>(path: string, body?: unknown): Promise<T> {
   return res.json();
 }
 
-export function startClimb(mode: ClimbMode, anonId?: string): Promise<StartResponse> {
+export function startClimb(mode: ClimbMode): Promise<StartResponse> {
   return request<StartResponse>("/api/climb/start", { mode });
 }
 
