@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { useGame } from "@/context/GameContext";
 import { StreakDisplay } from "@/components/StreakDisplay";
