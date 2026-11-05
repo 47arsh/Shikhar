@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { useGame } from "@/context/GameContext";
-import { StreakDisplay } from "@/components/StreakDisplay";
 
 export default function HomePage() {
-  const { dailyLocked, startNewClimb } = useGame();
+  const { startNewClimb } = useGame();
 
   const handleStartDaily = () => {
     startNewClimb("daily");
@@ -25,19 +24,13 @@ export default function HomePage() {
           An Indian rarity-trivia climbing game. Climb Kanchenjunga with rare answers.
         </p>
 
-        <StreakDisplay />
-
         <div className="space-y-3">
           <Link
             href="/play/daily"
             onClick={handleStartDaily}
-            className={`w-full py-4 rounded-xl font-bold text-white transition-all active:scale-95 shadow-lg ${
-              dailyLocked
-                ? "bg-slate-300 text-slate-500 cursor-not-allowed"
-                : "bg-shikhar-dusk hover:bg-shikhar-dusk/90"
-            }`}
+            className="w-full py-4 rounded-xl font-bold text-white transition-all active:scale-95 shadow-lg bg-shikhar-dusk hover:bg-shikhar-dusk/90"
           >
-            {dailyLocked ? "Daily climb (played today)" : "Daily climb"}
+            Daily climb
           </Link>
 
           <button

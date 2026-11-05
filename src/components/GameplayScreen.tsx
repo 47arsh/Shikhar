@@ -19,11 +19,10 @@ export function GameplayScreen({ mode }: GameplayScreenProps) {
     answer,
     checking,
     result,
-    streak,
-    dailyLocked,
-    setAnswer,
-    submitCurrentAnswer,
-    skipCurrentRound,
+  streak,
+  setAnswer,
+  submitCurrentAnswer,
+  skipCurrentRound,
     startNewClimb,
   } = useGame();
 
@@ -74,7 +73,6 @@ export function GameplayScreen({ mode }: GameplayScreenProps) {
           </div>
           <div className="flex items-center justify-between text-xs text-slate-500">
             <span>{streak} day streak</span>
-            {dailyLocked && <span>Daily climb locked</span>}
           </div>
         </div>
       </header>

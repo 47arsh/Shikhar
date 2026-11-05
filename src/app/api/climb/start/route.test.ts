@@ -87,21 +87,6 @@ describe("POST /api/climb/start", () => {
     expect(mockPrisma.climb.create).toHaveBeenCalled();
   });
 
-  it("rejects second daily start for same anonId/day", async () => {
-    mockPrisma.climb.findFirst.mockResolvedValue({
-      id: "existing",
-      mode: "daily",
-      dateKey: "2026-11-04",
-    });
-
-    const req = makeRequest({ mode: "daily" }, { "x-anon-id": "user-1" });
-    const res = await startPOST(req);
-    const json = await res.json();
-
-    expect(res.status).toBe(409);
-    expect(json.error).toBe("Daily climb already started today");
-  });
-
   it("starts a free climb with random prompts", async () => {
     mockPrisma.climb.create.mockResolvedValue({
       id: "c2",

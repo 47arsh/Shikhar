@@ -18,7 +18,6 @@ export interface ClimbState {
   checking: boolean;
   result: AnswerResponse | null;
   streak: number;
-  dailyLocked: boolean;
   outcome: string | null;
 }
 
@@ -32,7 +31,6 @@ export interface GameContextType extends ClimbState {
   resetGame: () => void;
 }
 
-const DAILY_KEY = "shikhar_daily_lock";
 const STREAK_KEY = "shikhar_streak";
 const ANON_ID_KEY = "shikhar_anon_id";
 
@@ -44,24 +42,6 @@ function getAnonId(): string {
     localStorage.setItem(ANON_ID_KEY, id);
   }
   return id;
-}
-
-function getDailyLocked(): boolean {
-  if (typeof window === "undefined") return false;
-  const val = localStorage.getItem(DAILY_KEY);
-  if (!val) return false;
-  try {
-    const parsed = JSON.parse(val);
-    const today = new Date().toISOString().slice(0, 10);
-    return parsed.date === today;
-  } catch {
-    return false;
-  }
-}
-
-function setDailyLocked(): void {
-  if (typeof window === "undefined") return;
-  localStorage.setItem(DAILY_KEY, JSON.stringify({ date: new Date().toISOString().slice(0, 10) }));
 }
 
 function getStoredStreak(): number {
@@ -92,15 +72,12 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     checking: false,
     result: null,
     streak: getStoredStreak(),
-    dailyLocked: getDailyLocked(),
     outcome: null,
   });
 
   const anonId = getAnonId();
 
   const startNewClimb = useCallback(async (mode: "daily" | "free") => {
-    if (mode === "daily" && state.dailyLocked) return;
-
     setState((s) => ({
       ...s,
       mode,
@@ -120,12 +97,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         climbId: data.climbId,
         prompts: data.prompts,
       }));
-      if (mode === "daily") setDailyLocked();
     } catch (err) {
       setState((s) => ({ ...s, status: "idle" }));
       throw err;
     }
-  }, [anonId, state.dailyLocked]);
+  }, [anonId]);
 
   const submitCurrentAnswer = useCallback(async () => {
     if (!state.climbId || state.checking) return;
@@ -222,11 +198,10 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       answer: "",
       checking: false,
       result: null,
-      streak: state.streak,
-      dailyLocked: state.dailyLocked,
-      outcome: null,
+    streak: state.streak,
+    outcome: null,
     });
-  }, [state.streak, state.dailyLocked]);
+  }, [state.streak]);
 
   const ctx: GameContextType = {
     ...state,
