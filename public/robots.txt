@@ -1,0 +1,7 @@
+Sitemap: https://shikhar.example/sitemap.xml
+
+User-agent: *
+Allow: /
+
+Disallow: /admin
+Disallow: /api
