@@ -198,8 +198,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       answer: "",
       checking: false,
       result: null,
-    streak: state.streak,
-    outcome: null,
+      streak: state.streak,
+      outcome: null,
     });
   }, [state.streak]);
 

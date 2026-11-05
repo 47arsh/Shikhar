@@ -19,10 +19,10 @@ export function GameplayScreen({ mode }: GameplayScreenProps) {
     answer,
     checking,
     result,
-  streak,
-  setAnswer,
-  submitCurrentAnswer,
-  skipCurrentRound,
+    streak,
+    setAnswer,
+    submitCurrentAnswer,
+    skipCurrentRound,
     startNewClimb,
   } = useGame();
 
@@ -34,8 +34,29 @@ export function GameplayScreen({ mode }: GameplayScreenProps) {
 
   const currentPrompt = prompts[currentRound - 1];
 
-  if (status === "idle" || !currentPrompt) {
-    return <div className="min-h-screen flex items-center justify-center p-4" />;
+  // Loading state while climb is being created
+  if (status === "playing" && (!prompts || prompts.length === 0)) {
+    return (
+      <div className="min-h-screen flex items-center justify-center p-4 bg-background">
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-12 h-12 border-4 border-shikhar-dusk border-t-transparent rounded-full animate-spin" />
+            <p className="text-lg font-medium text-shikhar-dusk">Starting climb…</p>
+            <p className="text-sm text-slate-500">Please wait.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!currentPrompt) {
+    return (
+      <div className="min-h-screen flex items-center justify-center p-4 bg-background">
+        <div className="text-center">
+          <p className="text-sm text-slate-500">No prompts available.</p>
+        </div>
+      </div>
+    );
   }
 
   const handleSubmit = useCallback(() => {
