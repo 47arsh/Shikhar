@@ -19,10 +19,10 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
 
   const { searchParams } = new URL(req.url);
   const parsed = querySchema.safeParse({
-    unreviewedOnly: searchParams.get("unreviewedOnly"),
-    minConfidence: searchParams.get("minConfidence"),
-    maxConfidence: searchParams.get("maxConfidence"),
-    take: searchParams.get("take"),
+    unreviewedOnly: searchParams.get("unreviewedOnly") ?? undefined,
+    minConfidence: searchParams.get("minConfidence") ?? undefined,
+    maxConfidence: searchParams.get("maxConfidence") ?? undefined,
+    take: searchParams.get("take") ?? undefined,
   });
   if (!parsed.success) {
     return NextResponse.json({ error: "Invalid query params" }, { status: 400 });

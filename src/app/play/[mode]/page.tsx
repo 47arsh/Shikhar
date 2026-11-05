@@ -8,8 +8,9 @@ import { ClimbResultScreen } from "@/components/ClimbResultScreen";
 import { ShareText } from "@/components/ShareText";
 import type { GameContextType } from "@/context/GameContext";
 
-export default function PlayPage({ params }: { params: { mode: string } }) {
-  void params;
+export default async function PlayPage({ params }: { params: Promise<{ mode: string }> }) {
+  const { mode } = await params;
+  void mode;
   const game = useGame() as GameContextType;
   const { status, result, totalPoints, outcome, prompts } = game;
   const [showResult, setShowResult] = useState(false);
