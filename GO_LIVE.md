@@ -34,3 +34,11 @@ on mock or local services; no env var requires a real account to develop.
 
 See `.env.example` for the full list with development placeholders.
 Never commit `.env.local`.
+
+## Removed concepts
+
+### Daily lock (removed)
+The daily climb lock (preventing a second daily climb per day) was removed
+during Phase 6. Both daily and free climbs can now be started any number of
+times. The `dailyLocked` state, `DAILY_KEY` localStorage key, and the
+`dateKey` uniqueness check in `/api/climb/start` have all been removed.
