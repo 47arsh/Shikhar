@@ -7,6 +7,12 @@ import { AnswerReveal } from "@/components/AnswerReveal";
 import { ClimbResultScreen } from "@/components/ClimbResultScreen";
 import { ShareText } from "@/components/ShareText";
 import type { GameContextType } from "@/context/GameContext";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Shikhar - Play the Climb",
+  description: "Play Shikhar - the Indian rarity-trivia climbing game. Name real answers and climb Kanchenjunga.",
+};
 
 export default async function PlayPage({ params }: { params: Promise<{ mode: string }> }) {
   const { mode } = await params;
