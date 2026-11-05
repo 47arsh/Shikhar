@@ -35,6 +35,10 @@ export function GameplayScreen({ mode }: GameplayScreenProps) {
 
   const currentPrompt = prompts[currentRound - 1];
 
+  if (status === "idle" || !currentPrompt) {
+    return <div className="min-h-screen flex items-center justify-center p-4" />;
+  }
+
   const handleSubmit = useCallback(() => {
     submitCurrentAnswer();
   }, [submitCurrentAnswer]);
@@ -46,10 +50,6 @@ export function GameplayScreen({ mode }: GameplayScreenProps) {
   const handleAnswerChange = useCallback((value: string) => {
     setAnswer(value);
   }, [setAnswer]);
-
-  if (status === "idle") {
-    return <div className="min-h-screen flex items-center justify-center p-4" />;
-  }
 
   const progress = (currentRound / GAME.roundsPerClimb) * 100;
 
