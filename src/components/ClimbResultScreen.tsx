@@ -7,19 +7,12 @@ interface ClimbResultScreenProps {
   onRestart: () => void;
 }
 
-function getTierEmoji(points: number): string {
-  if (points < 10) return "🟦";
-  if (points < 30) return "🟦";
-  if (points < 60) return "🟪";
-  return "🟧";
-}
-
-function getPointsEmoji(points: number): string {
-  if (points >= 80) return "🔥";
-  if (points >= 60) return "💎";
-  if (points >= 40) return "⭐";
-  if (points >= 20) return "✨";
-  return "💧";
+function getTierLabel(points: number): string {
+  if (points >= 80) return "Inferno";
+  if (points >= 60) return "Gem";
+  if (points >= 40) return "Star";
+  if (points >= 20) return "Sparkle";
+  return "Droplet";
 }
 
 export function ClimbResultScreen({ onRestart }: ClimbResultScreenProps) {
@@ -45,16 +38,15 @@ export function ClimbResultScreen({ onRestart }: ClimbResultScreenProps) {
   };
 
   const buildShareText = (): string => {
-    const tierEmoji = getTierEmoji(totalPoints);
-    const pointsEmoji = getPointsEmoji(totalPoints);
-    const status = summited ? "Summited!" : "Turned back";
-    return `Shikhar: ${status} at ${Math.round(altitude)}m — ${totalPoints} pts ${tierEmoji} ${pointsEmoji} #ShikharGame`;
+    const tier = getTierLabel(totalPoints);
+    const status = summited ? "Summited" : "Turned back";
+    return `Shikhar: ${status} at ${Math.round(altitude)}m — ${totalPoints} pts (${tier}) #ShikharGame`;
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-background">
       <div className="max-w-md w-full space-y-6">
-        {/* Summit flag */}
+        {/* Summit marker */}
         <div className="relative h-40 flex items-end justify-center">
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-24 bg-slate-400" />
           <div
@@ -62,13 +54,34 @@ export function ClimbResultScreen({ onRestart }: ClimbResultScreenProps) {
               summited ? "bg-shikhar-dawn" : "bg-slate-200"
             } rounded-t-lg shadow-md`}
           />
+          <svg
+            className={`absolute bottom-36 left-1/2 -translate-x-1/2 w-16 h-16 ${
+              summited ? "text-shikhar-dusk" : "text-slate-400"
+            }`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+          >
+            {summited ? (
+              <>
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </>
+            ) : (
+              <>
+                <path d="M20 12H4" />
+                <path d="M12 20V4" />
+              </>
+            )}
+          </svg>
         </div>
 
         {/* Result */}
         <div className="text-center">
-          <div className={`text-6xl mb-2 ${summited ? "text-green-500" : "text-slate-400"}`}>
-            {summited ? "🏔️" : "🏳️"}
-          </div>
           <h1 className="text-3xl font-display font-bold text-shikhar-dusk mb-2">
             {summited ? "Summited!" : "Turned back"}
           </h1>
@@ -91,7 +104,9 @@ export function ClimbResultScreen({ onRestart }: ClimbResultScreenProps) {
 
         {/* Streak */}
         <div className="flex items-center gap-2 text-sm text-slate-500">
-          <span>🔥</span>
+          <span className="text-shikhar-dusk font-medium" aria-hidden="true">
+            ▾
+          </span>
           <span>{streak} day streak</span>
         </div>
 

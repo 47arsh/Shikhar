@@ -54,6 +54,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     promptPicks.push({ id: p.id, round: i + 1, text: p.text, hint: p.hint, category: p.category });
   }
 
+  if (promptPicks.length === 0) {
+    return NextResponse.json({ error: "No prompts available to start a climb" }, { status: 400 });
+  }
+
   const climb = await prisma.climb.create({
     data: {
       anonId,

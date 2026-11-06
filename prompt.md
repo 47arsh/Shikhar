@@ -55,7 +55,7 @@ Win: total points reach pointsToSummit in any round → climb ends, "Summited in
 Lose: rounds run out → "Turned back at X m".
 
 Two modes:
-- Daily Climb: same 10 prompts for everyone, deterministic from IST date; one attempt per day per device; shareable result
+- Daily Climb: same 10 prompts for everyone, deterministic from IST date; shareable result. No daily lock — both daily and free climbs can be started any number of times (lock removed per GO_LIVE.md).
 - Free Climb: random 10 prompts, unlimited, not shared
 
 Prompt selection: 10 prompts per climb, no two from same category.
@@ -157,7 +157,7 @@ Answer reveal after each round: your answer, points, tier, rarest answers missed
 
 ## API
 
-- `POST /api/climb/start` `{ mode }` → `{ climbId, prompts: [{ round, text, hint, category }] }`. Daily: reject second start for same anonId/day.
+- `POST /api/climb/start` `{ mode }` → `{ climbId, prompts: [{ round, text, hint, category }] }`. No daily lock — both modes can be started any number of times.
 - `POST /api/climb/answer` `{ climbId, round, input }` → matched / unverified / out_of_attempts (can take up to `judgeTimeoutMs`; UI shows "Checking..." state for slow answers)
 - `POST /api/climb/skip` `{ climbId, round }`
 - `GET /api/climb/result/:id` → share page and Open Graph image
@@ -204,3 +204,23 @@ Ask before scope/cost changes. No secrets in git. Provide `.env.example`. Never 
 ## Manual steps (end only, from GO_LIVE.md)
 
 Buy domain, create Neon/Upstash/Vercel accounts, add env vars, AdSense, analytics.
+
+## Implementation status
+
+### Complete
+- Game round flow: start → prompt → answer → reveal → next round → finish → result
+- MountainScene: SVG mountain, altitude from base (1780m) to summit (8586m), SVG climber, animated ascent, `prefers-reduced-motion`, accessible labels, camps, zones, prayer flags
+- AnswerReveal: canonical answer, points, tier, First Ascent badge, "Next round"/"See results"/"Try again"/"Skip round" buttons, attemptsLeft, skipsLeft
+- ClimbResultScreen: final altitude, summited/turned back, streak, share
+- GameContext: attemptsLeft and skipsLeft tracking, outcome from API, reset without stale data
+- API routes: start, answer, skip, result all functional with Prisma + KV
+- Tests: 128 tests passing (scoring, MountainScene, AnswerReveal, GameplayScreen, ClimbResultScreen, API routes, pipeline, judge, entity lookup, normalize, matching, rarity)
+
+### Remaining
+- Deterministic daily prompt selection from IST date (no lock, but same prompts per date)
+- Admin review queue (`/api/admin/...`)
+- `scripts/simulate.ts` for tuning `pointsToSummit`
+- Content validation and seeding workflow with `verified: true` on all prompts
+
+### Open decisions
+- Daily climb: deterministic prompt selection per IST date is supported by the config (`dayBoundaryTz: "Asia/Kolkata"`) but no daily lock is enforced (removed per GO_LIVE.md). Daily prompts are selected randomly from the DB like free climbs until deterministic selection is implemented.

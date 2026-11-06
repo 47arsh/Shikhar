@@ -21,6 +21,8 @@ export interface ClimbState {
   outcome: string | null;
   error: string | null;
   isOnline: boolean;
+  attemptsLeft: number;
+  skipsLeft: number;
 }
 
 export interface GameContextType extends ClimbState {
@@ -78,6 +80,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     outcome: null,
     error: null,
     isOnline: typeof navigator !== "undefined" && navigator.onLine,
+    attemptsLeft: GAME.maxAttemptsPerRound,
+    skipsLeft: GAME.skipsPerClimb,
   });
 
   const anonId = getAnonId();
@@ -108,6 +112,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       checking: false,
       result: null,
       error: null,
+      attemptsLeft: GAME.maxAttemptsPerRound,
+      skipsLeft: GAME.skipsPerClimb,
     }));
 
     try {
@@ -140,15 +146,19 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         state.answer,
       );
 
+      const attemptsLeft =
+        data.attemptsLeft != null ? data.attemptsLeft : GAME.maxAttemptsPerRound;
+
       setState((s) => ({
         ...s,
         checking: false,
         result: data,
         status: "revealing",
+        attemptsLeft,
       }));
 
       if (data.outcome === "summited" || data.outcome === "turned_back") {
-        setState((s) => ({ ...s, status: "finished", totalPoints: data.totalPoints ?? s.totalPoints }));
+        setState((s) => ({ ...s, status: "finished", totalPoints: data.totalPoints ?? s.totalPoints, outcome: data.outcome ?? null }));
         if (data.outcome === "summited") {
           const newStreak = state.streak + 1;
           setState((s) => ({ ...s, streak: newStreak }));
@@ -177,9 +187,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         ...s,
         checking: false,
         status: data.outcome ? "finished" : "playing",
+        skipsLeft: data.skipsLeft ?? s.skipsLeft,
+        ...(!data.outcome ? { currentRound: s.currentRound + 1 } : {}),
       }));
       if (data.outcome) {
-        setState((s) => ({ ...s, status: "finished", totalPoints: s.totalPoints }));
+        setState((s) => ({ ...s, status: "finished", totalPoints: s.totalPoints, outcome: data.outcome ?? null }));
       }
     } catch {
       setState((s) => ({
@@ -206,6 +218,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       result: null,
       status: s.currentRound >= GAME.roundsPerClimb ? "finished" : "playing",
       checking: false,
+      attemptsLeft: GAME.maxAttemptsPerRound,
     }));
   }, []);
 
@@ -239,6 +252,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       outcome: null,
       error: null,
       isOnline: typeof navigator !== "undefined" && navigator.onLine,
+      attemptsLeft: GAME.maxAttemptsPerRound,
+      skipsLeft: GAME.skipsPerClimb,
     });
   }, [state.streak]);
 
