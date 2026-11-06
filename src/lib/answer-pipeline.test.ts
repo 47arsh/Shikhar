@@ -334,6 +334,12 @@ describe("AnswerPipeline - judge daily cap", () => {
 });
 
 describe("AnswerPipeline - farming invented strings", () => {
+  it("rejects arbitrary input (fixture-based judge)", async () => {
+    const { pipeline } = makePipeline();
+    const result = await pipeline.run({ ...baseInput, userInput: "pune" });
+    expect(result.outcome).toBe("invalid");
+  });
+
   it("rejects gibberish as invalid", async () => {
     const { pipeline } = makePipeline({
       judge: {

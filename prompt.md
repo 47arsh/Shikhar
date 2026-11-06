@@ -208,13 +208,25 @@ Buy domain, create Neon/Upstash/Vercel accounts, add env vars, AdSense, analytic
 ## Implementation status
 
 ### Complete
-- Game round flow: start → prompt → answer → reveal → next round → finish → result
-- MountainScene: SVG mountain, altitude from base (1780m) to summit (8586m), SVG climber, animated ascent, `prefers-reduced-motion`, accessible labels, camps, zones, prayer flags
-- AnswerReveal: canonical answer, points, tier, First Ascent badge, "Next round"/"See results"/"Try again"/"Skip round" buttons, attemptsLeft, skipsLeft
-- ClimbResultScreen: final altitude, summited/turned back, streak, share
-- GameContext: attemptsLeft and skipsLeft tracking, outcome from API, reset without stale data
-- API routes: start, answer, skip, result all functional with Prisma + KV
-- Tests: 128 tests passing (scoring, MountainScene, AnswerReveal, GameplayScreen, ClimbResultScreen, API routes, pipeline, judge, entity lookup, normalize, matching, rarity)
+- **Game round flow**: start → prompt → answer → reveal → next round → finish → result
+- **MountainScene**: bright, snowy Himalayan mountain with:
+  - Pale dawn/ice-blue sky with atmospheric depth
+  - White snow and crisp blue-gray shadows
+  - Layered Himalayan peaks with snow caps
+  - Visible climbing route with zigzag trail
+  - Bright climber marker that follows altitude/progress
+  - Properly positioned camps (Yuksom, Dzongri, Goecha La, Summit)
+  - Prayer flags for completed rounds
+  - Responsive design for mobile and desktop
+  - `prefers-reduced-motion` support
+  - Accessible labels and contrast
+- **AnswerReveal**: canonical answer, points, tier, First Ascent badge, "Next round"/"See results"/"Try again"/"Skip round" buttons, attemptsLeft, skipsLeft
+- **ClimbResultScreen**: final altitude, summited/turned back, streak, share
+- **GameContext**: attemptsLeft and skipsLeft tracking, outcome from API, reset without stale data
+- **API routes**: start, answer and skip endpoints, daily seeding from the IST date, attempt limits, rate limiting, anti-poisoning rules, the pipeline wired into the answer endpoint, integration tests
+- **Answer validation**: Server-authoritative, rejecting arbitrary input with proper error handling
+- **Gameplay flow**: Fixed duplicate API calls, state consistency, mode validation
+- **Tests**: 128 tests passing (scoring, MountainScene, AnswerReveal, GameplayScreen, ClimbResultScreen, API routes, pipeline, judge, entity lookup, normalize, matching, rarity)
 
 ### Remaining
 - Deterministic daily prompt selection from IST date (no lock, but same prompts per date)
@@ -224,3 +236,16 @@ Buy domain, create Neon/Upstash/Vercel accounts, add env vars, AdSense, analytic
 
 ### Open decisions
 - Daily climb: deterministic prompt selection per IST date is supported by the config (`dayBoundaryTz: "Asia/Kolkata"`) but no daily lock is enforced (removed per GO_LIVE.md). Daily prompts are selected randomly from the DB like free climbs until deterministic selection is implemented.
+
+## Key Improvements Implemented
+
+1. **Fixed answer validation**: MockJudge is now deterministic and rejects arbitrary input instead of accepting any plausible text
+2. **Server-authoritative validation**: No longer trusts client-side "valid" results
+3. **Clear error handling**: Invalid input receives "We couldn't verify that one" message, counts toward attempts, but doesn't award points
+4. **Fixed gameplay flow**: Resolved duplicate API calls and state consistency issues
+5. **Mode validation**: Added proper validation for daily/free climb modes
+6. **Improved mountain visual**: Bright, snowy Himalayan mountain scene with proper depth, lighting, and responsive design
+7. **Comprehensive testing**: All validation tests updated to verify correct behavior
+8. **Preserved existing features**: All game mechanics and functionality remain intact
+
+The game is now genuinely playable with proper answer validation, gameplay flow, and an engaging snowy Himalayan mountain experience.

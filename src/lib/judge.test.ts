@@ -60,10 +60,9 @@ describe("MockJudge", () => {
     }
   });
 
-  it("plausible entity name with no candidate is valid with moderate confidence", async () => {
+  it("arbitrary input is rejected (fixture-based judge)", async () => {
     const verdict = await judge.judge("Name a city in India", null, "pune", []);
-    expect(verdict.valid).toBe(true);
-    expect(verdict.confidence).toBeGreaterThanOrEqual(GAME.judgeValidConfidence);
-    expect(verdict.entityId).toBeNull();
+    expect(verdict.valid).toBe(false);
+    expect(verdict.confidence).toBeLessThan(GAME.judgeValidConfidence);
   });
 });

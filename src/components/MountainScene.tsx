@@ -29,9 +29,10 @@ function progressFromAltitude(altitude: number): number {
 }
 
 function getSkyColor(progress: number): string {
-  const r = Math.round(15 + (1 - progress) * 15);
-  const g = Math.round(30 + progress * 100);
-  const b = Math.round(58 + progress * 175);
+  // Pale dawn to ice-blue gradient
+  const r = Math.round(240 + (1 - progress) * 15);  // Warm whites to cool blues
+  const g = Math.round(248 + progress * 8);
+  const b = Math.round(255 - progress * 60);         // Ice blues
   return `rgb(${r}, ${g}, ${b})`;
 }
 
@@ -85,67 +86,124 @@ export function MountainScene({
 
   const zone = getZoneLabel(altitude);
   const roundedAltitude = Math.round(altitude);
+  const mountainLayerOpacity = Math.max(0.3, 1 - animatedProgress * 1.5);
 
   return (
     <section
       className={`relative min-h-screen w-full overflow-hidden ${className ?? ""}`}
       aria-label={`Mountain climb progress: ${roundedAltitude} meters, ${zone} zone`}
     >
-      {/* Sky gradient shifting with altitude */}
+      {/* Pale dawn to ice-blue sky gradient */}
       <div
         className="absolute inset-0 z-0 transition-colors duration-500"
         style={{ background: getSkyColor(animatedProgress) }}
         aria-hidden="true"
       />
 
-      {/* Distant mountain layer */}
+      {/* Bright snowy Himalayan peaks with atmospheric depth */}
       <div
         className="absolute inset-0 z-10 pointer-events-none"
-        style={{ transform: `translateY(${animatedProgress * -300}px)` }}
+        style={{ transform: `translateY(${animatedProgress * -250}px)` }}
         aria-hidden="true"
       >
         <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1200 800">
-          <rect width="1200" height="800" fill="#0f172a" />
+          {/* Far background - bright snowy peaks with soft blue shadows */}
           <path
-            d="M 0 600 Q 200 450 400 550 T 800 480 T 1200 520 V 800 H 0 Z"
-            fill="#1e293b"
-            opacity={0.6}
+            d="M 0 700 Q 150 580 300 650 T 600 580 T 900 620 T 1200 600 V 800 H 0 Z"
+            fill="#ffffff"
+            opacity={mountainLayerOpacity * 0.15}
           />
           <path
-            d="M 0 500 Q 300 350 600 450 T 1200 400 V 800 H 0 Z"
-            fill="#020617"
-            opacity={0.4}
+            d="M 0 650 Q 200 520 400 590 T 700 520 T 1000 570 V 800 H 0 Z"
+            fill="#e6f3ff"
+            opacity={mountainLayerOpacity * 0.2}
+          />
+          <path
+            d="M 0 600 Q 300 450 600 520 T 1200 470 V 800 H 0 Z"
+            fill="#cce7ff"
+            opacity={mountainLayerOpacity * 0.25}
+          />
+
+          {/* Middle peaks - bright with defined snow caps */}
+          <path
+            d="M 0 550 Q 100 420 300 500 T 600 420 T 900 480 T 1200 450 V 800 H 0 Z"
+            fill="#ffffff"
+            opacity={mountainLayerOpacity * 0.4}
+          />
+          <path
+            d="M 0 500 Q 150 370 350 440 T 650 370 T 950 430 V 800 H 0 Z"
+            fill="#f0f8ff"
+            opacity={mountainLayerOpacity * 0.5}
+          />
+
+          {/* Close foreground peaks - maximum contrast, bright snow */}
+          <path
+            d="M 0 450 Q 80 320 200 390 T 400 320 T 700 380 T 1000 340 V 800 H 0 Z"
+            fill="#ffffff"
+            opacity={mountainLayerOpacity}
+          />
+          <path
+            d="M 0 400 Q 120 270 250 330 T 500 270 T 850 330 V 800 H 0 Z"
+            fill="#e8f4ff"
+            opacity={mountainLayerOpacity * 1.1}
+          />
+
+          {/* Snow caps with subtle blue shadows */}
+          <ellipse cx="300" cy="180" rx="80" ry="25" fill="#f0f8ff" opacity="0.8" />
+          <ellipse cx="600" cy="160" rx="100" ry="30" fill="#ffffff" opacity="0.9" />
+          <ellipse cx="900" cy="170" rx="90" ry="28" fill="#f0f8ff" opacity="0.85" />
+
+          {/* Atmospheric depth gradient */}
+          <defs>
+            <linearGradient id="atmosphericGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="100%" stopColor="#e6f3ff" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M 0 420 Q 200 280 400 350 T 800 280 T 1200 330 V 800 H 0 Z"
+            fill="url(#atmosphericGradient)"
+            opacity={mountainLayerOpacity * 0.3}
           />
         </svg>
       </div>
 
-      {/* Middle mountain layer with trail */}
+      {/* Bright snow trail with visible depth */}
       <div
         className="absolute inset-0 z-20 pointer-events-none"
-        style={{ transform: `translateY(${animatedProgress * -600}px)` }}
+        style={{ transform: `translateY(${animatedProgress * -400}px)` }}
         aria-hidden="true"
       >
         <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1200 800">
-          <defs>
-            <linearGradient id="mountGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#334155" />
-              <stop offset="100%" stopColor="#475569" />
-            </linearGradient>
-          </defs>
+          {/* Main trail - crisp white with subtle shadow */}
           <path
-            d="M 0 550 Q 150 300 350 400 T 700 320 T 1050 380 V 800 H 0 Z"
-            fill="url(#mountGrad)"
-          />
-          {/* Trail path - zigzag */}
-          <path
-            d="M 100 780 Q 200 700 300 750 T 500 650 T 700 700 T 900 600 T 1100 650"
+            d="M 100 780 Q 150 700 250 730 T 400 650 T 550 700 T 700 580 T 850 630 T 1000 580 T 1100 650"
             fill="none"
-            stroke="#FDE68A"
+            stroke="#ffffff"
             strokeWidth="3"
-            strokeDasharray="8 4"
+            strokeDasharray="8 6"
             opacity={0.7}
           />
-          {/* Camps */}
+
+          {/* Trail shadow for depth */}
+          <path
+            d="M 100 780 Q 150 700 250 730 T 400 650 T 550 700 T 700 580 T 850 630 T 1000 580 T 1100 650"
+            fill="none"
+            stroke="#e6f0ff"
+            strokeWidth="1"
+            opacity={0.4}
+          />
+
+          {/* Sunlit trail sections */}
+          <path
+            d="M 100 780 L 250 730 L 400 650 L 550 700 L 700 580 L 850 630 L 1000 580 L 1100 650"
+            fill="none"
+            stroke="#fff8dc"
+            strokeWidth="1.5"
+            opacity={0.6}
+          />
+
+          {/* Bright camps with altitude markers */}
           {CAMPS.map((camp) => {
             const campProgress = progressFromAltitude(camp.altitude);
             const x = 100 + campProgress * 1000;
@@ -157,17 +215,30 @@ export function MountainScene({
                   cx={x}
                   cy={y}
                   r={reached ? 6 : 4}
-                  fill={reached ? "#FDE68A" : "#94a3b8"}
+                  fill={reached ? "#ffeb3b" : "#e8f4ff"}
+                  stroke={reached ? "#ffc107" : "#b3d9ff"}
+                  strokeWidth="1"
                 />
                 <text
                   x={x}
                   y={y - 10}
                   fontSize={12}
-                  fill="#e2e8f0"
+                  fill="#2c3e50"
                   textAnchor="middle"
                   fontWeight={reached ? "bold" : "normal"}
                 >
                   {camp.name}
+                </text>
+                <text
+                  x={x}
+                  y={y + 20}
+                  fontSize={10}
+                  fill="#ffffff"
+                  textAnchor="middle"
+                  fontWeight="normal"
+                  opacity={0.8}
+                >
+                  {camp.altitude}m
                 </text>
               </g>
             );
@@ -175,7 +246,7 @@ export function MountainScene({
         </svg>
       </div>
 
-      {/* Climber */}
+      {/* Bright climber indicator */}
       <div
         className="absolute z-30 pointer-events-none"
         style={{
@@ -191,13 +262,13 @@ export function MountainScene({
         <svg
           className="w-10 h-10"
           viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
+          fill="#4a90e2"
+          stroke="#2c5aa6"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <circle cx="12" cy="4" r="2" />
+          <circle cx="12" cy="4" r="2" fill="#ffffff" />
           <path d="M12 6v4" />
           <path d="M10 10h4" />
           <path d="M12 14l-2 4" />
@@ -207,22 +278,23 @@ export function MountainScene({
         </svg>
       </div>
 
-      {/* Altitude zone indicator */}
+      {/* Zone indicator with bright styling */}
       <div className="absolute top-4 left-4 z-40 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-shikhar-dusk border border-shikhar-dawn shadow-md" aria-label={`Zone: ${zone}`}>
+        <span className="text-shikhar-dawn mr-1">⬔</span>
         {zone}
       </div>
 
-      {/* Altitude display */}
-      <div className="absolute top-4 right-4 z-40 bg-white/90 backdrop-blur px-3 py-1 rounded text-sm font-mono text-shikhar-dusk border border-shikhar-dawn shadow-md" aria-label={`Altitude: ${roundedAltitude} meters`}>
-        {roundedAltitude} m
+      {/* Altitude display with better contrast */}
+      <div className="absolute top-4 right-4 z-40 bg-white/95 backdrop-blur px-3 py-1 rounded text-sm font-mono text-shikhar-dusk border border-shikhar-dawn shadow-md" aria-label={`Altitude: ${roundedAltitude} meters`}>
+        <span className="text-shikhar-dawn font-bold">🏔️</span> {roundedAltitude} m
       </div>
 
-      {/* Prayer flags */}
+      {/* Bright prayer flags for completed rounds */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 flex gap-1" aria-label={`Rounds completed: ${roundsCompleted} of ${GAME.roundsPerClimb}`}>
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
           <div
             key={i}
-            className={`w-4 h-3 rounded-t ${i <= roundsCompleted ? "bg-shikhar-dawn border-b-2 border-shikhar-dusk" : "bg-slate-200 opacity-30"} transition-all duration-300`}
+            className={`w-5 h-3 rounded-t ${i <= roundsCompleted ? "bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 border-b-2 border-green-600" : "bg-slate-200 opacity-30"} transition-all duration-300 shadow-sm`}
             aria-label={`Round ${i} ${i <= roundsCompleted ? "completed" : "pending"}`}
           />
         ))}

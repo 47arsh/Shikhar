@@ -114,14 +114,17 @@ export class MockJudge implements Judge {
       };
     }
 
-    // Default: plausible entity names are valid with moderate confidence
-    if (/^[a-zA-Z\s\-']+$/.test(normalized) && normalized.length > 2) {
+    // Deterministic: only accept known seeded answers/aliases or specific test fixtures
+    // Arbitrary input is rejected — the judge is fixture-based, not permissive
+    if (normalized === "ganges" || normalized === "ganga" || normalized === "yamuna" || 
+        normalized === "brahmaputra" || normalized === "nile" || normalized === "jordan" ||
+        normalized === "mississippi" || normalized === "amazon") {
       return {
         valid: true,
         canonicalName: userInput.trim(),
         entityId: null,
-        confidence: 0.85,
-        reason: "Plausible entity, no candidate match",
+        confidence: 0.95,
+        reason: "Matched known valid answer",
       };
     }
 
