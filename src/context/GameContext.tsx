@@ -164,13 +164,6 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
           setState((s) => ({ ...s, streak: newStreak }));
           setStoredStreak(newStreak);
         }
-      } else if (data.outcome === "summited" || data.outcome === "turned_back") {
-        setState((s) => ({ ...s, status: "finished", totalPoints: data.totalPoints ?? s.totalPoints, outcome: data.outcome ?? null }));
-        if (data.outcome === "summited") {
-          const newStreak = state.streak + 1;
-          setState((s) => ({ ...s, streak: newStreak }));
-          setStoredStreak(newStreak);
-        }
       } else if (data.outcome === "in_progress") {
         setState((s) => ({ ...s, totalPoints: data.totalPoints ?? s.totalPoints }));
       }
